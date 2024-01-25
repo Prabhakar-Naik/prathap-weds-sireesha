@@ -50,22 +50,6 @@ const HeroSection = () => {
     }
   }, [inView]);
 
-  const brideVariants = {
-    initial: {
-      left: "2rem",
-      opacity: 0,
-    },
-    end: {
-      left: "-1.5rem",
-      opacity: 1,
-      transition: {
-        duration: 0.7,
-        delay: 0.55,
-        ease: [0.33, 1, 0.68, 1],
-      },
-    },
-  };
-
   return (
     <section
       className="h-svh w-screen bg-primary relative overflow-x-hidden"

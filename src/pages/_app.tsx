@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 import { Inter } from "next/font/google";
 
 const customFont = localFont({
-  src: "./Stigmature.otf",
+  src: "../../public/fonts/Stigmature.otf",
   variable: "--font-primary",
 });
 
