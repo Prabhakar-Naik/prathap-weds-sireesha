@@ -5,12 +5,14 @@ interface AnimatedText {
   text: string | string[];
   el?: keyof JSX.IntrinsicElements;
   className?: string; // className can be optional
+  repeatAnimation?: boolean;
 }
 
 const AnimatedText = ({
   text,
-  el: Element = "p",
+  el: Element = "p" as const,
   className = "",
+  repeatAnimation = false,
 }: AnimatedText) => {
   const textRef = useRef(null);
   const inView = useInView(textRef, { amount: 0.5, once: true });
@@ -20,9 +22,6 @@ const AnimatedText = ({
     initial: {
       opacity: 0,
       y: 50,
-      transition: {
-        staggerChildren: 0.1,
-      },
     },
     animate: {
       opacity: 1,
@@ -30,7 +29,14 @@ const AnimatedText = ({
       transition: {
         duration: 0.7,
         ease: [0.33, 1, 0.68, 1],
-        staggerChildren: 0.1,
+      },
+    },
+    repeat: {
+      opacity: [0, 1],
+      y: [50, 0],
+      transition: {
+        duration: 0.7,
+        ease: [0.33, 1, 0.68, 1],
       },
     },
   };
@@ -41,10 +47,10 @@ const AnimatedText = ({
 
       <motion.span
         aria-hidden
-        initial="initial"
-        animate={inView ? "animate" : "initial"}
-        variants={defaultVariants}
         ref={textRef}
+        animate={inView ? (repeatAnimation ? "repeat" : "animate") : "initial"}
+        initial="initial"
+        transition={{ staggerChildren: 0.1 }}
       >
         {textArray.map((words, key) => {
           return (

@@ -6,4 +6,8 @@
   .card {
     @apply rounded-xl relative;
   }
+
+  .card-gradient {
+    @apply absolute top-0 left-0 z-10 h-full w-full bg-gradient-to-b from-[#00000000] via-[#00000010] to-[#000000];
+  }
 }
