@@ -96,7 +96,7 @@ const Details = () => {
       />
 
       <a
-        href=""
+        href="https://maps.app.goo.gl/3uUyw9qa1ZXYrAQXA"
         target="_blank"
         tabIndex={0}
         role="button"
@@ -114,6 +114,14 @@ const Details = () => {
           animate={startAnimation ? "animate" : "initial"}
           className="h-full w-full absolute bg-accent rounded-full"
         />
+      </a>
+
+      <a
+        href="https://pavanbhaskar.com"
+        target="_blank"
+        className="font-secondary text-primary text-center mt-4 text-xs"
+      >
+        Made with 💝 by <span className="underline">Pavan Bhaskar</span>
       </a>
     </section>
   );
