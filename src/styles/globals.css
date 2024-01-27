@@ -1,3 +1,24 @@
+/* lennis scroll styles */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,5 +30,21 @@
 
   .card-gradient {
     @apply absolute top-0 left-0 z-10 h-full w-full bg-gradient-to-b from-[#00000000] via-[#00000010] to-[#000000];
+  }
+
+  .second-pic {
+    @apply -top-[30vh] left-[5vw];
+  }
+
+  .third-pic {
+    @apply -top-[10vh] -left-[30vw];
+  }
+
+  .forth-pic {
+    @apply left-[27.5vw];
+  }
+
+  .fifth-pic {
+    @apply top-[27.5vh];
   }
 }

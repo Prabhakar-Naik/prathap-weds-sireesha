@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@studio-freight/lenis": "^1.0.34",
     "canvas-confetti": "^1.9.2",
     "dayjs": "^1.11.10",
     "framer-motion": "^10.18.0",

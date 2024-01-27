@@ -24,6 +24,9 @@ const config: Config = {
         primary: "var(--font-primary)",
         secondary: "var(--font-secondary)",
       },
+      screens: {
+        tall: { raw: "(min-height: 800px)" },
+      },
     },
   },
 };

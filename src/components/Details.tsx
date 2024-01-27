@@ -1,12 +1,14 @@
 import dayjs from "dayjs";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import AnimatedText from "@/utils/AnimatedText";
+import { LocationIcon } from "@/utils/Icons";
 
 const Details = () => {
   const containerRef = useRef(null);
   const inView = useInView(containerRef, { amount: 0.5, once: true });
+  const [startAnimation, setStartAnimation] = useState(false);
 
   const groomVariants = {
     initial: {
@@ -40,11 +42,24 @@ const Details = () => {
     },
   };
 
+  const buttonVariants = {
+    initial: {
+      top: "100%",
+    },
+    animate: {
+      top: 0,
+    },
+  };
+
+  const handleAnimation = () => {
+    setStartAnimation((current) => !current);
+  };
+
   return (
-    <section className="h-screen w-screen bg-text relative overflow-x-hidden py-8 px-4">
+    <section className="min-h-svh w-screen bg-text relative overflow-x-hidden py-8 px-4 flex flex-col justify-evenly">
       <AnimatedText
         text={["You’re invited to", "celebrate with us on..."]}
-        className="text-accent text-3xl text-center"
+        className="text-accent text-3xl text-center md:text-5xl"
       />
 
       <div
@@ -52,7 +67,7 @@ const Details = () => {
         ref={containerRef}
       >
         <motion.div
-          className="relative h-80 w-52 top-2 z-10"
+          className="relative h-80 w-52 top-2 z-10 md:h-96 md:w-60"
           variants={groomVariants}
           initial="initial"
           animate={inView ? "animate" : "initial"}
@@ -61,7 +76,7 @@ const Details = () => {
         </motion.div>
 
         <motion.div
-          className="relative h-72 w-52"
+          className="relative h-72 w-52 md:h-[22rem]"
           variants={brideVariants}
           initial="initial"
           animate={inView ? "animate" : "initial"}
@@ -77,8 +92,29 @@ const Details = () => {
           "123 Anywhere st",
           "Any city",
         ]}
-        className="text-primary font-secondary font-medium text-2xl text-center mt-4"
+        className="text-primary font-secondary font-medium text-2xl text-center mt-8 md:text-3xl"
       />
+
+      <a
+        href=""
+        target="_blank"
+        tabIndex={0}
+        role="button"
+        className="bg-primary w-56 h-12 rounded-full relative grid items-center overflow-hidden mx-auto mt-4"
+        onMouseEnter={handleAnimation}
+        onMouseLeave={handleAnimation}
+      >
+        <span className="flex items-center gap-2 text-xl font-secondary justify-center z-10 text-text">
+          View in map <LocationIcon />
+        </span>
+
+        <motion.div
+          variants={buttonVariants}
+          initial="initial"
+          animate={startAnimation ? "animate" : "initial"}
+          className="h-full w-full absolute bg-accent rounded-full"
+        />
+      </a>
     </section>
   );
 };

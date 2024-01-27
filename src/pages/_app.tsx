@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import localFont from "next/font/local";
 import { Inter } from "next/font/google";
+import LenisScrollProvider from "@/components/LenisScrollProvider";
 
 const customFont = localFont({
   src: "../../public/fonts/Stigmature.otf",
@@ -15,10 +16,12 @@ const inter = Inter({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main
-      className={`${customFont.variable} ${inter.variable} font-primary antialiased`}
-    >
-      <Component {...pageProps} />
-    </main>
+    <LenisScrollProvider>
+      <main
+        className={`${customFont.variable} ${inter.variable} font-primary antialiased`}
+      >
+        <Component {...pageProps} />
+      </main>
+    </LenisScrollProvider>
   );
 }

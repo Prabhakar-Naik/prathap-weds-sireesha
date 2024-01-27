@@ -36,8 +36,8 @@ const HeroSection = () => {
     );
 
     await confetti({
-      particleCount: 100,
-      spread: 70,
+      particleCount: 150,
+      spread: 160,
       origin: { y: 0.6 },
       gravity: 0.75,
       shapes: ["square"],
@@ -52,25 +52,25 @@ const HeroSection = () => {
 
   return (
     <section
-      className="h-svh w-screen bg-primary relative overflow-x-hidden"
+      className="min-h-svh w-screen bg-primary relative overflow-x-hidden"
       ref={scope}
     >
       <AnimatedText
-        text={["Uday", "weds", "Padmaja"]}
-        className="text-5xl text-center text-text leading-15 absolute top-[17vh] w-screen"
+        text={["Varun", "weds", "Pooja"]}
+        className="text-5xl text-center text-text leading-15 absolute top-[17vh] w-screen tall:top-[20vh] md:portrait:text-7xl"
         el="h1"
       />
 
-      <div className="relative h-full w-[140vw] left-[50%] translate-x-[-50%] pointer-events-none">
+      <div className="relative h-screen w-[140vw] left-[50%] translate-x-[-50%] pointer-events-none">
         <Image src="./decoration.svg" alt="marriage_decoration" priority fill />
       </div>
 
       <div
-        className="flex items-end absolute bottom-0 left-[50%] translate-x-[-50%]"
+        className="flex items-end absolute bottom-0 left-[50%] translate-x-[-50%] md:translate-x-[-45%]"
         ref={containerRef}
       >
         <motion.div
-          className="relative h-[22rem] w-44"
+          className="relative h-[22rem] w-44 md:portrait:h-[34rem] md:portrait:w-52 z-10"
           id="groom"
           initial={{
             left: "-2rem",
@@ -81,7 +81,7 @@ const HeroSection = () => {
         </motion.div>
 
         <motion.div
-          className="relative h-80 w-52"
+          className="relative h-80 w-52 md:portrait:h-[30.5rem] md:portrait:w-[19rem]"
           id="bride"
           initial={{
             left: "2rem",
