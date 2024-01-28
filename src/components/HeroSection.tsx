@@ -52,7 +52,7 @@ const HeroSection = () => {
 
   return (
     <section
-      className="min-h-svh w-screen bg-primary relative overflow-x-hidden"
+      className="h-screen w-screen bg-primary relative overflow-x-hidden"
       ref={scope}
     >
       <AnimatedText

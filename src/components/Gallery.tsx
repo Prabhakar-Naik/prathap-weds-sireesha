@@ -51,7 +51,7 @@ const Gallery = () => {
 
   return (
     <>
-      <section className="min-h-svh w-screen bg-secondary relative overflow-x-hidden grid items-center md:hidden">
+      <section className="min-h-screen w-screen bg-secondary relative overflow-x-hidden grid items-center md:hidden">
         <Swiper
           effect={"cards"}
           grabCursor={true}
