@@ -15,7 +15,7 @@ const AnimatedText = ({
   repeatAnimation = false,
 }: AnimatedText) => {
   const textRef = useRef(null);
-  const inView = useInView(textRef, { amount: 1, once: true });
+  const inView = useInView(textRef, { amount: 0.5, once: true });
   const textArray = Array.isArray(text) ? text : [text];
 
   const defaultVariants = {

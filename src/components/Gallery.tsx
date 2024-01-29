@@ -26,11 +26,7 @@ const Gallery = () => {
     offset: ["start start", "end end"],
   });
 
-  const scale4 = useTransform(scrollYProgress, [0, 1], [1, 4]);
-  const scale5 = useTransform(scrollYProgress, [0, 1], [1, 5]);
-  const scale6 = useTransform(scrollYProgress, [0, 1], [1, 6]);
-  const scale7 = useTransform(scrollYProgress, [0, 1], [1, 7]);
-  const scale8 = useTransform(scrollYProgress, [0, 1], [1, 8]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 4]);
 
   const handleTextAnimation = (e: SwiperType) => {
     setRepeatedCount((current) => {
@@ -42,11 +38,11 @@ const Gallery = () => {
   };
 
   const pictures = [
-    { source: couplePic, scale: scale4 },
-    { source: groomPic, scale: scale4 },
-    { source: bridePic, scale: scale4 },
-    { source: WeddingPic1, scale: scale4 },
-    { source: WeddingPic2, scale: scale4 },
+    { source: couplePic, scale },
+    { source: groomPic, scale },
+    { source: bridePic, scale },
+    { source: WeddingPic1, scale },
+    { source: WeddingPic2, scale },
   ];
 
   return (
