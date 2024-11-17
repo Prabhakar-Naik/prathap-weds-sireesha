@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 const typography = require("@tailwindcss/typography");
+const tailwindAnimate = require("tailwindcss-animate");
 
 const config: Config = {
   content: [
@@ -8,7 +9,7 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/utils/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  plugins: [typography], // added typography plugin
+  plugins: [typography, tailwindAnimate], // added typography plugin
   theme: {
     extend: {
       lineHeight: {

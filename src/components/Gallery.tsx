@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 // Import Swiper React components
@@ -17,8 +19,11 @@ import WeddingPic2 from "../../public/wedding_pics/weddingPic2.webp";
 import AnimatedText from "@/utils/AnimatedText";
 import type { Swiper as SwiperType } from "swiper";
 import { useScroll, useTransform, motion } from "framer-motion";
+import { Dictionary } from "@/lib/types";
 
-const Gallery = () => {
+const Gallery = ({ data }: { data: Dictionary }) => {
+  const { groom, bride } = data;
+
   const [repeatedCount, setRepeatedCount] = useState<number>(0);
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -68,9 +73,12 @@ const Gallery = () => {
             />
 
             <div className="z-20 absolute bottom-12 left-7">
-              <AnimatedText text="Groom" className="text-accent text-3xl" />
               <AnimatedText
-                text="Varun Reddy"
+                text={groom.title}
+                className="text-accent text-3xl capitalize"
+              />
+              <AnimatedText
+                text={groom.name}
                 className="text-primary font-secondary text-2xl"
               />
             </div>
@@ -92,12 +100,12 @@ const Gallery = () => {
 
             <div className="z-20 absolute bottom-12 left-7">
               <AnimatedText
-                text="Bride"
+                text={bride.title}
                 className="text-accent text-3xl"
                 repeatAnimation={repeatedCount === 1}
               />
               <AnimatedText
-                text="Pooja Reddy"
+                text={bride.name}
                 className="text-primary font-secondary text-2xl"
                 repeatAnimation={repeatedCount === 1}
               />

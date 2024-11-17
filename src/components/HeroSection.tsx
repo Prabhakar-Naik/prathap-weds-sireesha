@@ -1,10 +1,13 @@
+"use client";
+
 import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion, useAnimate, useInView } from "framer-motion";
 import confetti from "canvas-confetti";
 import AnimatedText from "@/utils/AnimatedText";
+import { Dictionary } from "@/lib/types";
 
-const HeroSection = () => {
+const HeroSection = ({ data }: { data: Dictionary }) => {
   const containerRef = useRef(null);
   const inView = useInView(containerRef, { amount: 0.5, once: true });
   const [scope, animate] = useAnimate();
@@ -56,7 +59,7 @@ const HeroSection = () => {
       ref={scope}
     >
       <AnimatedText
-        text={["Varun", "weds", "Pooja"]}
+        text={data.title.split(" ")}
         className="text-5xl text-center text-text leading-15 absolute top-[17vh] w-screen tall:top-[20vh] md:portrait:text-7xl"
         el="h1"
       />
