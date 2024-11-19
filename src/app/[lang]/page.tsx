@@ -1,4 +1,5 @@
 import React from "react";
+
 import HeroSection from "@/components/HeroSection";
 import Gallery from "@/components/Gallery";
 import Details from "@/components/Details";
@@ -13,7 +14,7 @@ const page = async ({ params }: { params: Params }) => {
     <>
       <HeroSection data={data} />
       <Gallery data={data} />
-      <Details />
+      <Details invite={data.invite} date={data.date} />
     </>
   );
 };

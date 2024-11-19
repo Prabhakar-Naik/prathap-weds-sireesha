@@ -28,8 +28,10 @@ const Navbar = ({
   return (
     <>
       <nav className="fixed top-4 w-full z-10">
-        <div className="bg-secondary/50 flex justify-between items-center w-11/12 mx-auto py-2 px-4 rounded-full backdrop-blur-md max-w-3xl">
-          <Logo className="size-8" />
+        <div className="bg-secondary/50 border border-text/20 flex justify-between items-center w-11/12 mx-auto py-2 px-4 rounded-full backdrop-blur-md max-w-3xl">
+          <Link href="/">
+            <Logo className="size-8" />
+          </Link>
 
           <button
             onClick={() => {
@@ -68,7 +70,7 @@ const Navbar = ({
       </nav>
 
       <div className={`fixed w-full top-[4.5rem] z-10`} key={"content-open"}>
-        <div className="flex w-11/12 max-w-3xl justify-end">
+        <div className="flex w-11/12 max-w-3xl mx-auto justify-end">
           <motion.div
             initial={{
               height: 0,
@@ -82,12 +84,24 @@ const Navbar = ({
               duration: 0.3,
               easing: [0.22, 1, 0.36, 1],
             }}
-            className={`bg-secondary/50 backdrop-blur-md w-11/12 max-w-56 rounded-xl flex flex-col gap-2 p-4`}
+            className={`bg-secondary/50 border text-lg border-text/20 backdrop-blur-md w-11/12 max-w-56 rounded-xl flex flex-col gap-2 p-4`}
           >
-            <Link href="/" className="h-max capitalize font-secondary">
+            <Link
+              href="/groom"
+              onClick={() => {
+                setOpen((current) => !current);
+              }}
+              className="h-max capitalize font-secondary"
+            >
               🙍‍♂️ {groom.title}
             </Link>
-            <Link href="/" className="h-max capitalize font-secondary">
+            <Link
+              href="/bride"
+              onClick={() => {
+                setOpen((current) => !current);
+              }}
+              className="h-max capitalize font-secondary"
+            >
               🙍‍♀️ {bride.title}
             </Link>
           </motion.div>

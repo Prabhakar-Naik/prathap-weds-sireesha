@@ -4,13 +4,24 @@ import dayjs from "dayjs";
 import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
+import { useParams } from "next/navigation";
 import AnimatedText from "@/utils/AnimatedText";
 import { LocationIcon } from "@/utils/Icons";
+import { Dictionary } from "@/lib/types";
+import { Locale } from "@/i18n.config";
 
-const Details = () => {
+const Details = ({
+  invite,
+  date,
+}: {
+  invite: Dictionary["invite"];
+  date: Dictionary["date"];
+}) => {
   const containerRef = useRef(null);
   const inView = useInView(containerRef, { amount: 0.5, once: true });
   const [startAnimation, setStartAnimation] = useState(false);
+  const { lang } = useParams<{ lang: Locale }>();
+  const convertedDate = new Date(date);
 
   const groomVariants = {
     initial: {
@@ -57,10 +68,16 @@ const Details = () => {
     setStartAnimation((current) => !current);
   };
 
+  const dayjsDate = dayjs(convertedDate);
+  const day = dayjsDate.get("D");
+  const month = lang === "te" ? "డిసెంబర్" : "December";
+  const weekDay = lang === "te" ? "శుక్రవారం" : "Friday";
+  const place = lang === "te" ? "భీమవరం" : "Bhimavaram";
+
   return (
     <section className="min-h-svh w-screen bg-text relative overflow-x-hidden py-8 px-4 flex flex-col justify-evenly">
       <AnimatedText
-        text={["You’re invited to", "celebrate with us on..."]}
+        text={[invite]}
         className="text-accent text-3xl text-center md:text-5xl"
       />
 
@@ -89,10 +106,8 @@ const Details = () => {
 
       <AnimatedText
         text={[
-          dayjs().add(1, "M").format("D MMM, dddd"),
-          "at",
-          "123 Anywhere st",
-          "Any city",
+          `${day} ${month}, ${dayjs(convertedDate).get("y")}, ${weekDay}`,
+          place,
         ]}
         className="text-primary font-secondary font-medium text-2xl text-center mt-8 md:text-3xl"
       />
@@ -106,9 +121,9 @@ const Details = () => {
         onMouseEnter={handleAnimation}
         onMouseLeave={handleAnimation}
       >
-        <span className="flex items-center gap-2 text-xl font-secondary justify-center z-10 text-text">
-          View in map <LocationIcon />
-        </span>
+        <div className="flex items-center gap-2 text-xl font-secondary justify-center leading-3 z-10 text-text">
+          <span className="mt-1">Location</span> <LocationIcon />
+        </div>
 
         <motion.div
           variants={buttonVariants}

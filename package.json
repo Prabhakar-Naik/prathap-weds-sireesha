@@ -20,6 +20,9 @@
     "swiper": "^11.0.5"
   },
   "devDependencies": {
+    "@content-collections/core": "^0.7.3",
+    "@content-collections/mdx": "^0.2.0",
+    "@content-collections/next": "^0.2.4",
     "@tailwindcss/typography": "^0.5.10",
     "@types/canvas-confetti": "^1.6.4",
     "@types/node": "^20.11.0",

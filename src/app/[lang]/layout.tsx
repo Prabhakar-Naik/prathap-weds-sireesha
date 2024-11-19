@@ -19,12 +19,6 @@ const teluguPrimaryFont = NTR({
   weight: "400",
 });
 
-const hindiPrimaryFont = Kalam({
-  subsets: ["devanagari"],
-  variable: "--font-primary",
-  weight: "400",
-});
-
 const teluguSecondaryFont = Noto_Sans_Telugu({
   subsets: ["latin", "telugu"],
   variable: "--font-secondary",
@@ -43,12 +37,10 @@ const fontFamily: {
   primary: {
     en: englishPrimaryFont,
     te: teluguPrimaryFont,
-    hi: hindiPrimaryFont,
   },
   secondary: {
     en: hindiEnglishSecondaryFont,
     te: teluguSecondaryFont,
-    hi: hindiEnglishSecondaryFont,
   },
 };
 

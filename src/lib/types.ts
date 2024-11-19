@@ -11,6 +11,8 @@ export type Dictionary = {
     title: string;
     name: string;
   };
+  invite: string;
+  date: string;
 };
 
 export type Params = Promise<{ lang: Locale }>;

@@ -11,11 +11,11 @@ import "swiper/css/effect-cards";
 
 // import required modules
 import { EffectCards } from "swiper/modules";
-import couplePic from "../../public/wedding_pics/weddingPic3.webp";
-import groomPic from "../../public/wedding_pics/groom.webp";
-import bridePic from "../../public/wedding_pics/bride.webp";
-import WeddingPic1 from "../../public/wedding_pics/weddingPic1.webp";
-import WeddingPic2 from "../../public/wedding_pics/weddingPic2.webp";
+import couplePic from "../../public/wedding_pics/group.avif";
+import groomPic from "../../public/wedding_pics/uday.avif";
+import bridePic from "../../public/wedding_pics/swapna.avif";
+import WeddingPic1 from "../../public/wedding_pics/weddingPic1.avif";
+import WeddingPic2 from "../../public/wedding_pics/weddingPic2.avif";
 import AnimatedText from "@/utils/AnimatedText";
 import type { Swiper as SwiperType } from "swiper";
 import { useScroll, useTransform, motion } from "framer-motion";
@@ -66,10 +66,11 @@ const Gallery = ({ data }: { data: Dictionary }) => {
               src={groomPic}
               fill
               alt="groom_pic2"
-              className="object-cover object-center"
-              quality={50}
+              className="object-cover object-top"
               priority
               placeholder="blur"
+              quality={100}
+              sizes="800px"
             />
 
             <div className="z-20 absolute bottom-12 left-7">
@@ -92,10 +93,10 @@ const Gallery = ({ data }: { data: Dictionary }) => {
               src={bridePic}
               fill
               alt="bride_pic2"
-              className="object-cover object-right"
-              quality={50}
+              className="object-cover"
               priority
               placeholder="blur"
+              sizes="800px"
             />
 
             <div className="z-20 absolute bottom-12 left-7">
@@ -123,7 +124,7 @@ const Gallery = ({ data }: { data: Dictionary }) => {
               className="object-cover object-center"
               placeholder="blur"
               priority={false}
-              quality={50}
+              sizes="800px"
             />
           </SwiperSlide>
 
@@ -136,7 +137,7 @@ const Gallery = ({ data }: { data: Dictionary }) => {
               className="object-cover object-center"
               placeholder="blur"
               priority={false}
-              quality={50}
+              sizes="800px"
             />
           </SwiperSlide>
 
@@ -148,7 +149,7 @@ const Gallery = ({ data }: { data: Dictionary }) => {
               className="object-cover object-center"
               placeholder="blur"
               priority={false}
-              quality={50}
+              sizes="800px"
             />
           </SwiperSlide>
         </Swiper>
@@ -177,7 +178,7 @@ const Gallery = ({ data }: { data: Dictionary }) => {
                       fill
                       alt={`wedding_image${index}`}
                       placeholder="blur"
-                      className="object-cover object-center"
+                      className="object-cover object-top"
                     />
                   </div>
                 </motion.div>
