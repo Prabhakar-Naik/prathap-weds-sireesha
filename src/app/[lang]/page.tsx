@@ -16,18 +16,18 @@ const page = async ({ params }: { params: Params }) => {
 
   // in case of unknown route redirecting to english
   if (!success) {
-    return notFound();
-  } else {
-    const data = await getDictionary(parsedLanguage);
-
-    return (
-      <>
-        <HeroSection data={data} />
-        <Gallery data={data} />
-        <Details invite={data.invite} date={data.date} />
-      </>
-    );
+    return null;
   }
+
+  const data = await getDictionary(parsedLanguage);
+
+  return (
+    <>
+      <HeroSection data={data} />
+      <Gallery data={data} />
+      <Details invite={data.invite} date={data.date} />
+    </>
+  );
 };
 
 export default page;
