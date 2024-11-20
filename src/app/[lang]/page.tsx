@@ -6,7 +6,13 @@ import Details from "@/components/Details";
 import { getDictionary } from "@/lib/dictionary";
 import { Params } from "@/lib/types";
 import { ParamsSchema } from "@/lib/types";
-import { notFound } from "next/navigation";
+import { i18n } from "@/i18n.config";
+
+export async function generateStaticParams() {
+  return i18n.locales.map((lang) => ({
+    lang,
+  }));
+}
 
 const page = async ({ params }: { params: Params }) => {
   const resolvedLanguage = (await params).lang;

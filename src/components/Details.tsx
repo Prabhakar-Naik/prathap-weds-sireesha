@@ -113,7 +113,7 @@ const Details = ({
       />
 
       <a
-        href="https://maps.app.goo.gl/3uUyw9qa1ZXYrAQXA"
+        href="https://maps.app.goo.gl/yeJBRyUoHo6zgYJZA"
         target="_blank"
         tabIndex={0}
         role="button"

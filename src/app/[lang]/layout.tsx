@@ -8,6 +8,7 @@ import { Locale } from "@/i18n.config";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
 import { getDictionary } from "@/lib/dictionary";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
 
 const englishPrimaryFont = localFont({
   src: "../../../public/fonts/Stigmature.otf",
@@ -43,6 +44,49 @@ const fontFamily: {
     en: hindiEnglishSecondaryFont,
     te: teluguSecondaryFont,
   },
+};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> {
+  const resolvedParams = (await params).lang;
+
+  const { success, data: parsedLanguage } =
+    ParamsSchema.safeParse(resolvedParams);
+
+  if (!success) {
+    return {};
+  }
+
+  const data = await getDictionary(parsedLanguage);
+
+  return {
+    title: data.title,
+    description: data.description,
+    metadataBase: new URL("https://uday-weds-swapna.vercel.app"),
+    openGraph: {
+      title: data.title,
+      description: data.description,
+      url: "https://uday-weds-swapna.vercel.app",
+      images: [
+        {
+          url: "/og-image.webp",
+          width: 1200,
+          height: 630,
+          alt: `og image`,
+        },
+      ],
+      locale: parsedLanguage === "en" ? "en_US" : "te_IN",
+      type: "website",
+    },
+  };
+}
+
+export const viewport = {
+  colorScheme: "light",
+  initialScale: 1,
 };
 
 export default async function Layout({

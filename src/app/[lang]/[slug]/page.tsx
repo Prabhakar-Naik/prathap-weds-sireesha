@@ -3,8 +3,18 @@ import { allPages } from "content-collections";
 import { MDXContent } from "@content-collections/mdx/react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-
+import { i18n } from "@/i18n.config";
 type Params = Promise<{ lang: Locale; slug: string }>;
+
+export async function generateStaticParams() {
+  const pages = ["bride", "groom"];
+
+  return pages
+    .map((slug) => {
+      return i18n.locales.map((lang) => ({ lang, slug }));
+    })
+    .flat();
+}
 
 const DynamicPage = async ({ params }: { params: Params }) => {
   const resolvedLanguage = (await params).lang;
@@ -20,7 +30,7 @@ const DynamicPage = async ({ params }: { params: Params }) => {
 
   return (
     <section className="bg-primary min-h-screen px-4 py-24">
-      <article className="prose text-text prose-lg prose-stone prose-img:bg-stone-300 prose-a:after:content-['↗'] mx-auto prose-headings:font-normal prose-headings:mt-0 prose-headings:mb-2 prose-headings:font-primary prose-a:text-accent prose-headings:text-accent font-secondary animate-in fade-in slide-in-from-bottom-24 duration-300 ease-[cubic-bezier(0.33,1,0.68,1)]">
+      <article className="prose text-text prose-lg prose-stone prose-img:bg-stone-300 prose-a:after:content-['↗'] mx-auto prose-headings:font-normal prose-headings:mt-0 prose-headings:mb-2 prose-headings:font-primary font-secondary animate-in fade-in slide-in-from-bottom-24 duration-300 ease-[cubic-bezier(0.33,1,0.68,1)]">
         <div className="relative not-prose aspect-square rounded-md overflow-hidden mb-10 bg-stone-300">
           <Image
             src={page.imageURL}

@@ -16,10 +16,10 @@ const config: Config = {
         15: "3.5rem",
       },
       colors: {
-        primary: "#FFEFCD",
-        secondary: "#A58E74",
-        accent: "#E09132",
-        text: "#424530",
+        primary: "#F5EFFF",
+        secondary: "#DFCCFB",
+        accent: "#EF9C66",
+        text: "#624E88",
       },
       fontFamily: {
         primary: "var(--font-primary)",

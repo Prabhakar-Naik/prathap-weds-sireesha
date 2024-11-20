@@ -32,7 +32,7 @@ const Navbar = ({
   return (
     <>
       <nav className="fixed top-4 w-full z-20">
-        <div className="bg-secondary/50 border border-text/20 flex justify-between items-center w-11/12 mx-auto py-2 px-4 rounded-full backdrop-blur-md max-w-3xl">
+        <div className="bg-primary/50 border border-text/50 flex justify-between items-center w-11/12 mx-auto py-2 px-4 rounded-full backdrop-blur-md max-w-3xl">
           <Link href={`/${lang}`}>
             <Logo className="size-8" />
           </Link>
@@ -88,7 +88,7 @@ const Navbar = ({
               duration: 0.3,
               easing: [0.22, 1, 0.36, 1],
             }}
-            className={`bg-secondary/50 text-text border text-lg border-text/20 backdrop-blur-md w-11/12 max-w-56 rounded-xl flex flex-col gap-2 p-4`}
+            className={`bg-primary/50 text-text border text-lg border-text/50 backdrop-blur-md w-11/12 max-w-56 rounded-xl flex flex-col gap-2 p-4`}
           >
             <Link
               href={`/${lang}/groom`}
@@ -109,7 +109,7 @@ const Navbar = ({
               🙍‍♀️ {bride.title}
             </Link>
             <Link
-              href="https://google.com/maps"
+              href="https://maps.app.goo.gl/yeJBRyUoHo6zgYJZA"
               onClick={() => {
                 setOpen((current) => !current);
               }}

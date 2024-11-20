@@ -1,27 +1,23 @@
-/* lennis scroll styles */
-html.lenis {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* :root {
+  --primary-color: #FFEFCD;
+  --secondary: #A58E74;
+  --accent: #E09132;
+  --text: #424530
+
+  --primary-color: #F5EFFF;
+  --secondary: #E4E0E1;
+  --accent: #FEF9D9;
+  --text: #624E88
+
+  --primary-color: #fbc4ab;
+  --secondary: #f08080;
+  --accent: #FEF9D9;
+  --text: #723d46
+} */
 
 @layer components {
   .card {
@@ -47,4 +43,25 @@ html.lenis {
   .fifth-pic {
     @apply top-[27.5vh];
   }
+}
+
+/* lennis scroll styles */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }

@@ -31,7 +31,7 @@ const Timer = () => {
   }
 
   return (
-    <div className="flex items-center gap-4 text-sm bg-secondary py-1 px-2 rounded-md">
+    <div className="flex items-center gap-4 text-sm bg-secondary/70 py-1 px-2 rounded-md">
       <div className="grid">
         <NumberFlow value={timeLeft.days} className="font-mono" />
         <span>Days</span>
