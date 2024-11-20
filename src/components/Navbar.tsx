@@ -6,6 +6,9 @@ import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { Dictionary } from "@/lib/types";
 import Link from "next/link";
+import { useParams } from "next/navigation";
+import { Locale } from "@/i18n.config";
+import Timer from "./Timer";
 
 const variants = {
   initial: {
@@ -24,12 +27,13 @@ const Navbar = ({
   groom: Dictionary["groom"];
 }) => {
   const [open, setOpen] = useState(false);
+  const { lang } = useParams<{ lang: Locale }>();
 
   return (
     <>
-      <nav className="fixed top-4 w-full z-10">
+      <nav className="fixed top-4 w-full z-20">
         <div className="bg-secondary/50 border border-text/20 flex justify-between items-center w-11/12 mx-auto py-2 px-4 rounded-full backdrop-blur-md max-w-3xl">
-          <Link href="/">
+          <Link href={`/${lang}`}>
             <Logo className="size-8" />
           </Link>
 
@@ -69,7 +73,7 @@ const Navbar = ({
         </div>
       </nav>
 
-      <div className={`fixed w-full top-[4.5rem] z-10`} key={"content-open"}>
+      <div className="fixed w-full top-[4.5rem] z-20" key={"content-open"}>
         <div className="flex w-11/12 max-w-3xl mx-auto justify-end">
           <motion.div
             initial={{
@@ -77,17 +81,17 @@ const Navbar = ({
               opacity: 0,
             }}
             animate={{
-              height: open ? "10rem" : 0,
+              height: open ? "12rem" : 0,
               opacity: open ? 1 : 0,
             }}
             transition={{
               duration: 0.3,
               easing: [0.22, 1, 0.36, 1],
             }}
-            className={`bg-secondary/50 border text-lg border-text/20 backdrop-blur-md w-11/12 max-w-56 rounded-xl flex flex-col gap-2 p-4`}
+            className={`bg-secondary/50 text-text border text-lg border-text/20 backdrop-blur-md w-11/12 max-w-56 rounded-xl flex flex-col gap-2 p-4`}
           >
             <Link
-              href="/groom"
+              href={`/${lang}/groom`}
               onClick={() => {
                 setOpen((current) => !current);
               }}
@@ -96,7 +100,7 @@ const Navbar = ({
               🙍‍♂️ {groom.title}
             </Link>
             <Link
-              href="/bride"
+              href={`/${lang}/bride`}
               onClick={() => {
                 setOpen((current) => !current);
               }}
@@ -104,6 +108,18 @@ const Navbar = ({
             >
               🙍‍♀️ {bride.title}
             </Link>
+            <Link
+              href="https://google.com/maps"
+              onClick={() => {
+                setOpen((current) => !current);
+              }}
+              target="_blank"
+              className="h-max capitalize font-secondary"
+            >
+              📍 Location
+            </Link>
+
+            <Timer />
           </motion.div>
         </div>
       </div>

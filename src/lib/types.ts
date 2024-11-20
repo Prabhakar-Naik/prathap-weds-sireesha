@@ -1,4 +1,5 @@
 import { Locale } from "@/i18n.config";
+import { z } from "zod";
 
 export type Dictionary = {
   title: string;
@@ -15,4 +16,5 @@ export type Dictionary = {
   date: string;
 };
 
-export type Params = Promise<{ lang: Locale }>;
+export const ParamsSchema = z.enum(["en", "te"]);
+export type Params = Promise<{ lang: Locale | string }>;

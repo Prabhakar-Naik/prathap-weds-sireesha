@@ -70,7 +70,7 @@ const Gallery = ({ data }: { data: Dictionary }) => {
               priority
               placeholder="blur"
               quality={100}
-              sizes="800px"
+              sizes="500px"
             />
 
             <div className="z-20 absolute bottom-12 left-7">
@@ -96,7 +96,7 @@ const Gallery = ({ data }: { data: Dictionary }) => {
               className="object-cover"
               priority
               placeholder="blur"
-              sizes="800px"
+              sizes="500px"
             />
 
             <div className="z-20 absolute bottom-12 left-7">
@@ -124,7 +124,7 @@ const Gallery = ({ data }: { data: Dictionary }) => {
               className="object-cover object-center"
               placeholder="blur"
               priority={false}
-              sizes="800px"
+              sizes="500px"
             />
           </SwiperSlide>
 
@@ -137,7 +137,7 @@ const Gallery = ({ data }: { data: Dictionary }) => {
               className="object-cover object-center"
               placeholder="blur"
               priority={false}
-              sizes="800px"
+              sizes="500px"
             />
           </SwiperSlide>
 
@@ -149,7 +149,7 @@ const Gallery = ({ data }: { data: Dictionary }) => {
               className="object-cover object-center"
               placeholder="blur"
               priority={false}
-              sizes="800px"
+              sizes="500px"
             />
           </SwiperSlide>
         </Swiper>

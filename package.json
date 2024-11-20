@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@number-flow/react": "^0.3.4",
     "@studio-freight/lenis": "^1.0.34",
     "canvas-confetti": "^1.9.2",
     "dayjs": "^1.11.10",
@@ -17,7 +18,9 @@
     "next": "15.0.3",
     "react": "19.0.0-rc.1",
     "react-dom": "19.0.0-rc.1",
-    "swiper": "^11.0.5"
+    "rehype-unwrap-images": "^1.0.0",
+    "swiper": "^11.0.5",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@content-collections/core": "^0.7.3",
