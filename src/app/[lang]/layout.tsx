@@ -11,7 +11,7 @@ import { redirect } from "next/navigation";
 import { Metadata } from "next";
 
 const englishPrimaryFont = localFont({
-  src: "../../../public/fonts/Stigmature.otf",
+  src: "../../../public/fonts/Monalisa.otf",
   variable: "--font-primary",
 });
 
@@ -64,11 +64,9 @@ export async function generateMetadata({
 
   return {
     title: data.title,
-    description: data.description,
     metadataBase: new URL("https://uday-weds-swapna.vercel.app"),
     openGraph: {
       title: data.title,
-      description: data.description,
       url: "https://uday-weds-swapna.vercel.app",
       images: [
         {
@@ -105,12 +103,13 @@ export default async function Layout({
   }
 
   const data = await getDictionary(parsedLanguage);
+
   return (
     <LenisScrollProvider>
-      <Navbar groom={data.groom} bride={data.bride} />
       <main
         className={`${fontFamily.primary[parsedLanguage].variable} ${fontFamily.secondary[parsedLanguage].variable} font-primary antialiased`}
       >
+        <Navbar groom={data.groom} bride={data.bride} />
         {children}
       </main>
     </LenisScrollProvider>

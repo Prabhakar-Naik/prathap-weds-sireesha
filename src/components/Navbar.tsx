@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Logo from "./Logo";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { Dictionary } from "@/lib/types";
@@ -33,8 +32,8 @@ const Navbar = ({
     <>
       <nav className="fixed top-4 w-full z-20">
         <div className="bg-primary/50 border border-text/50 flex justify-between items-center w-11/12 mx-auto py-2 px-4 rounded-full backdrop-blur-md max-w-3xl">
-          <Link href={`/${lang}`}>
-            <Logo className="size-8" />
+          <Link href={`/${lang}`} className="font-primary text-2xl text-text">
+            {lang === "en" ? "Wedding Invitation" : "పెండ్లి పిలుపు"}
           </Link>
 
           <button

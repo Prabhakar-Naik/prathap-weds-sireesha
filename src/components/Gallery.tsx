@@ -12,7 +12,7 @@ import "swiper/css/effect-cards";
 // import required modules
 import { EffectCards } from "swiper/modules";
 import couplePic from "../../public/wedding_pics/group.avif";
-import groomPic from "../../public/wedding_pics/uday.avif";
+import groomPic from "../../public/wedding_pics/uday.webp";
 import bridePic from "../../public/wedding_pics/swapna.avif";
 import WeddingPic1 from "../../public/wedding_pics/weddingPic1.avif";
 import WeddingPic2 from "../../public/wedding_pics/weddingPic2.avif";

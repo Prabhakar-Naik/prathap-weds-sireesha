@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import NumberFlow from "@number-flow/react";
 
 const Timer = () => {
-  const targetDate = new Date("2024-12-06T04:27:00+05:30").getTime();
+  const targetDate = new Date("2024-12-07T04:27:00+05:30").getTime();
   const [timeLeft, setTimeLeft] = useState(getTimeRemaining(targetDate));
 
   useEffect(() => {
@@ -33,23 +33,32 @@ const Timer = () => {
   return (
     <div className="flex items-center gap-4 text-sm bg-secondary/70 py-1 px-2 rounded-md">
       <div className="grid">
-        <NumberFlow value={timeLeft.days} className="font-mono" />
-        <span>Days</span>
+        <NumberFlow value={timeLeft.days} className="font-mono font-semibold" />
+        <span className="font-secondary">Days</span>
       </div>
 
       <div className="grid">
-        <NumberFlow value={timeLeft.hours} className="font-mono" />
-        <span>Hrs</span>
+        <NumberFlow
+          value={timeLeft.hours}
+          className="font-mono font-semibold"
+        />
+        <span className="font-secondary">Hrs</span>
       </div>
 
       <div className="grid">
-        <NumberFlow value={timeLeft.minutes} className="font-mono" />
-        <span>Mins</span>
+        <NumberFlow
+          value={timeLeft.minutes}
+          className="font-mono font-semibold"
+        />
+        <span className="font-secondary">Mins</span>
       </div>
 
       <div className="grid">
-        <NumberFlow value={timeLeft.seconds} className="font-mono" />
-        <span>Sec</span>
+        <NumberFlow
+          value={timeLeft.seconds}
+          className="font-mono font-semibold"
+        />
+        <span className="font-secondary">Sec</span>
       </div>
     </div>
   );

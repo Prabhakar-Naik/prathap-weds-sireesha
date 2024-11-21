@@ -45,7 +45,7 @@ const Details = ({
       opacity: 0,
     },
     animate: {
-      left: "-1rem",
+      left: "-3rem",
       opacity: 1,
       transition: {
         duration: 0.7,
@@ -106,8 +106,10 @@ const Details = ({
 
       <AnimatedText
         text={[
-          `${day} ${month}, ${dayjs(convertedDate).get("y")}, ${weekDay}`,
-          place,
+          `${day} ${month}, ${dayjs(convertedDate).get("y")}, ${dayjsDate.get(
+            "hours"
+          )}: ${dayjsDate.get("minutes")} AM`,
+          `${weekDay}, ${place}`,
         ]}
         className="text-primary font-secondary font-medium text-2xl text-center mt-8 md:text-3xl"
       />
