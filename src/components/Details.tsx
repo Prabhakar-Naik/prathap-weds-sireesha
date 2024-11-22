@@ -134,7 +134,10 @@ const Details = ({
         onMouseLeave={handleAnimation}
       >
         <div className="flex items-center gap-2 text-xl font-secondary justify-center leading-3 z-10 text-text">
-          <span className="mt-1">Location</span> <LocationIcon />
+          <span className="mt-1">
+            {lang === "en" ? "Location" : "కళ్యాణ వేదిక"}
+          </span>{" "}
+          <LocationIcon />
         </div>
 
         <motion.div

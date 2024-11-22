@@ -115,7 +115,7 @@ const Navbar = ({
               target="_blank"
               className="h-max capitalize font-secondary"
             >
-              📍 Location
+              📍 {lang === "en" ? "Location" : "కళ్యాణ వేదిక"}
             </Link>
 
             <Timer />
