@@ -1,22 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { AnimatePresence, motion, MotionConfig } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { VolumeOff, Volume2 } from "lucide-react";
 import { Dictionary } from "@/lib/types";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Locale } from "@/i18n.config";
 import Timer from "./Timer";
-
-const variants = {
-  initial: {
-    scale: 0.5,
-  },
-  animate: {
-    scale: 1,
-  },
-};
 
 const Navbar = ({
   bride,
@@ -26,7 +17,42 @@ const Navbar = ({
   groom: Dictionary["groom"];
 }) => {
   const [open, setOpen] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const audioRef = useRef<HTMLAudioElement>(null);
   const { lang } = useParams<{ lang: Locale }>();
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (audioRef.current) {
+        audioRef.current.play();
+        setIsPlaying(true);
+      }
+
+      return () => {
+        clearTimeout(timeout);
+
+        if (audioRef.current) {
+          audioRef.current.currentTime = 0;
+          audioRef.current.pause();
+        }
+      };
+    }, 1000);
+  }, []);
+
+  const handlePlayPause = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        audioRef.current.play().catch((err) => {
+          console.error("Audio playback failed:", err);
+        });
+        setIsPlaying(true);
+      }
+    }
+  };
 
   return (
     <>
@@ -36,43 +62,53 @@ const Navbar = ({
             {lang === "en" ? "Wedding Invitation" : "పెండ్లి పిలుపు"}
           </Link>
 
-          <button
-            onClick={() => {
-              setOpen((current) => !current);
-            }}
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              <MotionConfig
-                transition={{
-                  duration: 0.25,
-                }}
+          <div className="flex gap-2">
+            <button
+              className="h-10 w-10 grid place-items-center rounded-full"
+              onClick={handlePlayPause}
+            >
+              {isPlaying ? <Volume2 size={20} /> : <VolumeOff size={20} />}
+            </button>
+
+            <button
+              className="group"
+              aria-expanded={open}
+              aria-label={open ? "Close menu" : "Open menu"}
+              onClick={() => {
+                setOpen((current) => !current);
+              }}
+            >
+              <svg
+                className="pointer-events-none"
+                width={20}
+                height={20}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                {open ? (
-                  <motion.div
-                    key="close"
-                    variants={variants}
-                    initial="initial"
-                    animate="animate"
-                  >
-                    <X />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    variants={variants}
-                    initial="initial"
-                    animate="animate"
-                    key="open"
-                  >
-                    <Menu />
-                  </motion.div>
-                )}
-              </MotionConfig>
-            </AnimatePresence>
-          </button>
+                <path
+                  d="M4 12L20 12"
+                  className="origin-center -translate-y-[7px] transition-all duration-300 [transition-timing-function:cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-x-0 group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[315deg]"
+                />
+                <path
+                  d="M4 12H20"
+                  className="origin-center transition-all duration-300 [transition-timing-function:cubic-bezier(.5,.85,.25,1.8)] group-aria-expanded:rotate-45"
+                />
+                <path
+                  d="M4 12H20"
+                  className="origin-center translate-y-[7px] transition-all duration-300 [transition-timing-function:cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[135deg]"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </nav>
 
-      <div className="fixed w-full top-[4.5rem] z-20" key={"content-open"}>
+      <div className="fixed w-full top-[5rem] z-20" key={"content-open"}>
         <div className="flex w-11/12 max-w-3xl mx-auto justify-end">
           <motion.div
             initial={{
@@ -117,6 +153,10 @@ const Navbar = ({
             >
               📍 {lang === "en" ? "Location" : "కళ్యాణ వేదిక"}
             </Link>
+
+            <audio id="musicplayer" autoPlay ref={audioRef} loop>
+              <source src="/Alanati-Ramachandrudu.mp3" />
+            </audio>
 
             <Timer />
           </motion.div>
