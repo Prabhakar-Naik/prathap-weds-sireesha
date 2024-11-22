@@ -1,37 +1,32 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-cards";
 
-// import required modules
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
 import { EffectCards } from "swiper/modules";
+
 import couplePic from "../../public/wedding_pics/group.avif";
 import groomPic from "../../public/wedding_pics/uday.webp";
 import bridePic from "../../public/wedding_pics/swapna.avif";
 import WeddingPic1 from "../../public/wedding_pics/weddingPic1.avif";
 import WeddingPic2 from "../../public/wedding_pics/weddingPic2.avif";
 import AnimatedText from "@/utils/AnimatedText";
-import type { Swiper as SwiperType } from "swiper";
-import { useScroll, useTransform, motion } from "framer-motion";
 import { Dictionary } from "@/lib/types";
+import { useWindowSize } from "@/utils/useWindowSize";
+import GalleryZoomIn from "./GalleryZoomIn";
 
 const Gallery = ({ data }: { data: Dictionary }) => {
   const { groom, bride } = data;
+  const { width } = useWindowSize();
 
   const [repeatedCount, setRepeatedCount] = useState<number>(0);
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 4]);
 
   const handleTextAnimation = (e: SwiperType) => {
     setRepeatedCount((current) => {
@@ -42,151 +37,114 @@ const Gallery = ({ data }: { data: Dictionary }) => {
     });
   };
 
-  const pictures = [
-    { source: couplePic, scale },
-    { source: groomPic, scale },
-    { source: bridePic, scale },
-    { source: WeddingPic1, scale },
-    { source: WeddingPic2, scale },
-  ];
-
   return (
     <>
       <section className="min-h-screen w-screen bg-secondary relative overflow-x-hidden grid items-center md:hidden">
-        <Swiper
-          effect={"cards"}
-          grabCursor={true}
-          modules={[EffectCards]}
-          className="h-[550px] w-[325px]"
-          onSlideChange={handleTextAnimation}
-        >
-          {/* groom_pic */}
-          <SwiperSlide className="card">
-            <Image
-              src={groomPic}
-              fill
-              alt="groom_pic2"
-              className="object-cover object-top"
-              priority
-              placeholder="blur"
-              quality={100}
-              sizes="500px"
-            />
-
-            <div className="z-20 absolute bottom-12 left-7">
-              <AnimatedText
-                text={groom.title}
-                className="text-accent text-3xl capitalize"
+        {width < 768 ? (
+          <Swiper
+            effect={"cards"}
+            grabCursor={true}
+            modules={[EffectCards]}
+            className="h-[550px] w-[325px]"
+            onSlideChange={handleTextAnimation}
+          >
+            {/* groom_pic */}
+            <SwiperSlide className="card">
+              <Image
+                src={groomPic}
+                fill
+                alt="groom_pic2"
+                className="object-cover object-top"
+                priority
+                placeholder="blur"
+                quality={100}
+                sizes="500px"
               />
-              <AnimatedText
-                text={groom.name}
-                className="text-primary font-secondary text-2xl"
+
+              <div className="z-20 absolute bottom-12 left-7">
+                <AnimatedText
+                  text={groom.title}
+                  className="text-accent text-3xl capitalize"
+                />
+                <AnimatedText
+                  text={groom.name}
+                  className="text-primary font-secondary text-2xl"
+                />
+              </div>
+
+              <div className="card-gradient" />
+            </SwiperSlide>
+
+            {/* bride_pic */}
+            <SwiperSlide className="card">
+              <Image
+                src={bridePic}
+                fill
+                alt="bride_pic2"
+                className="object-cover"
+                priority
+                placeholder="blur"
+                sizes="500px"
               />
-            </div>
 
-            <div className="card-gradient" />
-          </SwiperSlide>
+              <div className="z-20 absolute bottom-12 left-7">
+                <AnimatedText
+                  text={bride.title}
+                  className="text-accent text-3xl"
+                  repeatAnimation={repeatedCount === 1}
+                />
+                <AnimatedText
+                  text={bride.name}
+                  className="text-primary font-secondary text-2xl"
+                  repeatAnimation={repeatedCount === 1}
+                />
+              </div>
 
-          {/* bride_pic */}
-          <SwiperSlide className="card">
-            <Image
-              src={bridePic}
-              fill
-              alt="bride_pic2"
-              className="object-cover"
-              priority
-              placeholder="blur"
-              sizes="500px"
-            />
+              <div className="card-gradient" />
+            </SwiperSlide>
 
-            <div className="z-20 absolute bottom-12 left-7">
-              <AnimatedText
-                text={bride.title}
-                className="text-accent text-3xl"
-                repeatAnimation={repeatedCount === 1}
+            {/* couplePic */}
+            <SwiperSlide className="card">
+              <Image
+                src={couplePic}
+                fill
+                alt="couple_pic"
+                className="object-cover object-center"
+                placeholder="blur"
+                priority={false}
+                sizes="500px"
               />
-              <AnimatedText
-                text={bride.name}
-                className="text-primary font-secondary text-2xl"
-                repeatAnimation={repeatedCount === 1}
+            </SwiperSlide>
+
+            {/* candid shots */}
+            <SwiperSlide className="card">
+              <Image
+                src={WeddingPic1}
+                fill
+                alt="wedding_pic1"
+                className="object-cover object-center"
+                placeholder="blur"
+                priority={false}
+                sizes="500px"
               />
-            </div>
+            </SwiperSlide>
 
-            <div className="card-gradient" />
-          </SwiperSlide>
-
-          {/* couplePic */}
-          <SwiperSlide className="card">
-            <Image
-              src={couplePic}
-              fill
-              alt="couple_pic"
-              className="object-cover object-center"
-              placeholder="blur"
-              priority={false}
-              sizes="500px"
-            />
-          </SwiperSlide>
-
-          {/* candid shots */}
-          <SwiperSlide className="card">
-            <Image
-              src={WeddingPic1}
-              fill
-              alt="wedding_pic1"
-              className="object-cover object-center"
-              placeholder="blur"
-              priority={false}
-              sizes="500px"
-            />
-          </SwiperSlide>
-
-          <SwiperSlide className="card">
-            <Image
-              src={WeddingPic2}
-              fill
-              alt="wedding_pic2"
-              className="object-cover object-center"
-              placeholder="blur"
-              priority={false}
-              sizes="500px"
-            />
-          </SwiperSlide>
-        </Swiper>
+            <SwiperSlide className="card">
+              <Image
+                src={WeddingPic2}
+                fill
+                alt="wedding_pic2"
+                className="object-cover object-center"
+                placeholder="blur"
+                priority={false}
+                sizes="500px"
+              />
+            </SwiperSlide>
+          </Swiper>
+        ) : (
+          <GalleryZoomIn />
+        )}
       </section>
-
-      <div className="hidden pt-[25vh] bg-secondary md:block">
-        <section className="h-[300vh] relative" ref={containerRef}>
-          <div className="sticky top-0 overflow-hidden h-[100vh]">
-            {pictures.map(({ source, scale }, index) => {
-              return (
-                <motion.div
-                  key={index}
-                  style={{ scale }}
-                  className="w-full h-full absolute flex justify-center items-center"
-                >
-                  <div
-                    className={`relative w-[25vw] h-[25vh] ${
-                      index === 1 ? "-left-[27.5vw] h-[40vh]" : ""
-                    } ${index === 2 ? "left-[27.5vw] h-[40vh]" : ""}
-                    ${index === 3 ? "-top-[35vh] h-[40vh]" : ""}
-                    ${index === 4 ? "-bottom-[35vh] h-[40vh]" : ""}
-                    `}
-                  >
-                    <Image
-                      src={source}
-                      fill
-                      alt={`wedding_image${index}`}
-                      placeholder="blur"
-                      className="object-cover object-top"
-                    />
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </section>
-      </div>
     </>
   );
 };
