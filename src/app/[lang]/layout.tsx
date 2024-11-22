@@ -70,7 +70,7 @@ export async function generateMetadata({
       url: "https://uday-weds-swapna.vercel.app",
       images: [
         {
-          url: "/og-image.webp",
+          url: "/og-image-together.webp",
           width: 1200,
           height: 630,
           alt: `og image`,
