@@ -71,8 +71,23 @@ const Details = ({
   const dayjsDate = dayjs(convertedDate);
   const day = dayjsDate.get("D");
   const month = lang === "te" ? "డిసెంబర్" : "December";
-  const weekDay = lang === "te" ? "శుక్రవారం" : "Friday";
+  const weekDay = lang === "te" ? "శుక్రవారం" : "Saturday";
   const place = lang === "te" ? "భీమవరం" : "Bhimavaram";
+
+  const formattedDate =
+    lang === "en"
+      ? [
+          `${day} ${month}, ${dayjs(convertedDate).get("y")}, ${dayjsDate.get(
+            "hours"
+          )}: ${dayjsDate.get("minutes")} AM`,
+          `${weekDay}, ${place}`,
+        ]
+      : [
+          `${day - 1} ${month}, ${dayjs(convertedDate).get(
+            "y"
+          )}, రాత్రి ${dayjsDate.get("hours")}: ${dayjsDate.get("minutes")}`,
+          `${weekDay}, ${place}`,
+        ];
 
   return (
     <section className="min-h-svh w-screen bg-text relative overflow-x-hidden py-8 px-4 flex flex-col justify-evenly">
@@ -105,12 +120,7 @@ const Details = ({
       </div>
 
       <AnimatedText
-        text={[
-          `${day} ${month}, ${dayjs(convertedDate).get("y")}, ${dayjsDate.get(
-            "hours"
-          )}: ${dayjsDate.get("minutes")} AM`,
-          `${weekDay}, ${place}`,
-        ]}
+        text={formattedDate}
         className="text-primary font-secondary font-medium text-2xl text-center mt-8 md:text-3xl"
       />
 

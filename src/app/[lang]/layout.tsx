@@ -107,7 +107,7 @@ export default async function Layout({
   return (
     <LenisScrollProvider>
       <main
-        className={`${fontFamily.primary[parsedLanguage].variable} ${fontFamily.secondary[parsedLanguage].variable} font-primary antialiased`}
+        className={`${fontFamily.primary[parsedLanguage].variable} ${fontFamily.secondary[parsedLanguage].variable} font-primary bg-primary text-text antialiased`}
       >
         <Navbar groom={data.groom} bride={data.bride} />
         {children}
