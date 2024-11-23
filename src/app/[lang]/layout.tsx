@@ -12,7 +12,7 @@ import { Metadata } from "next";
 import { LoaderContextProvider } from "@/utils/LoaderContext";
 
 const englishPrimaryFont = localFont({
-  src: "../../../public/fonts/Monalisa.otf",
+  src: "../../../public/fonts/Love_Cookies.otf",
   variable: "--font-primary",
 });
 

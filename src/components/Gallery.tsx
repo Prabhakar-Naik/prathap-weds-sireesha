@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, Suspense } from "react";
+import React, { MutableRefObject, useRef, useState } from "react";
 import Image from "next/image";
 
 // Import Swiper styles
@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/effect-cards";
 
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { EffectCards } from "swiper/modules";
 import dynamic from "next/dynamic";
@@ -21,12 +21,14 @@ import WeddingPic2 from "../../public/wedding_pics/weddingPic2.avif";
 import AnimatedText from "@/utils/AnimatedText";
 import { Dictionary } from "@/lib/types";
 import { useWindowSize } from "@/utils/useWindowSize";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const GalleryZoomIn = dynamic(() => import("./GalleryZoomIn"), { ssr: false });
 
 const Gallery = ({ data }: { data: Dictionary }) => {
   const { groom, bride } = data;
   const { width } = useWindowSize();
+  const swiperRef = useRef<SwiperType>(null) as MutableRefObject<SwiperType>;
 
   const [repeatedCount, setRepeatedCount] = useState<number>(0);
 
@@ -40,12 +42,16 @@ const Gallery = ({ data }: { data: Dictionary }) => {
   };
 
   return (
-    <Suspense fallback={null}>
-      <section className="min-h-screen w-screen bg-secondary relative overflow-x-hidden grid items-center md:hidden">
-        {width < 768 ? (
+    <>
+      {width < 768 ? (
+        <section className="min-h-screen w-screen bg-secondary relative overflow-x-hidden grid items-center md:hidden">
           <Swiper
             effect={"cards"}
             grabCursor={true}
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            loop
             modules={[EffectCards]}
             className="h-[550px] w-[325px]"
             onSlideChange={handleTextAnimation}
@@ -143,11 +149,35 @@ const Gallery = ({ data }: { data: Dictionary }) => {
               />
             </SwiperSlide>
           </Swiper>
-        ) : (
-          <GalleryZoomIn />
-        )}
-      </section>
-    </Suspense>
+
+          <div className="flex gap-2 justify-center -translate-y-4">
+            <button
+              className="h-12 relative w-12 grid place-items-center border hover:bg-text/10 transition-colors border-text rounded-full text-lg font-secondary"
+              onClick={() => {
+                if (swiperRef.current) {
+                  swiperRef.current.slidePrev();
+                }
+              }}
+            >
+              <ChevronLeft />
+            </button>
+
+            <button
+              className="h-12 relative w-12 grid place-items-center border hover:bg-text/10 transition-colors border-text rounded-full text-lg font-secondary"
+              onClick={() => {
+                if (swiperRef.current) {
+                  swiperRef.current.slideNext();
+                }
+              }}
+            >
+              <ChevronRight />
+            </button>
+          </div>
+        </section>
+      ) : (
+        <GalleryZoomIn />
+      )}
+    </>
   );
 };
 

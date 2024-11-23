@@ -17,7 +17,7 @@ const HeroSection = ({ data }: { data: Dictionary }) => {
     animate(
       "#groom",
       {
-        left: "1.25rem",
+        left: "3rem",
         opacity: 1,
       },
       {
@@ -30,7 +30,7 @@ const HeroSection = ({ data }: { data: Dictionary }) => {
     await animate(
       "#bride",
       {
-        left: "-1.5rem",
+        left: "0rem",
         opacity: 1,
       },
       {
@@ -57,7 +57,7 @@ const HeroSection = ({ data }: { data: Dictionary }) => {
 
   return (
     <section ref={scope}>
-      <div className="h-screen w-screen bg-primary relative overflow-x-hidden">
+      <div className="h-screen w-screen bg-gradient-to-b from-primary to-text relative overflow-x-hidden">
         <AnimatedText
           text={data.title.split(" ")}
           className="text-5xl text-center text-text leading-15 absolute top-[17vh] w-screen tall:top-[20vh] md:portrait:text-7xl"
@@ -93,7 +93,7 @@ const HeroSection = ({ data }: { data: Dictionary }) => {
             className="relative h-80 w-52 md:portrait:h-[30.5rem] md:portrait:w-[19rem]"
             id="bride"
             initial={{
-              left: "2rem",
+              left: "3rem",
               opacity: 0,
             }}
           >

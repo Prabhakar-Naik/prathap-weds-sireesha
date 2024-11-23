@@ -3,12 +3,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import { VolumeOff, Volume2 } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Dictionary } from "@/lib/types";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Locale } from "@/i18n.config";
 import Timer from "./Timer";
 import { useLoaderContext } from "@/utils/LoaderContext";
+import UdayProfilePic from "../../public/uday-profile.webp";
+import SwapnaProfilePic from "../../public/swapna-profile.webp";
 
 const Navbar = ({
   bride,
@@ -111,7 +114,7 @@ const Navbar = ({
               opacity: 0,
             }}
             animate={{
-              height: open ? "12rem" : 0,
+              height: open ? "13.5rem" : 0,
               opacity: open ? 1 : 0,
             }}
             transition={{
@@ -125,18 +128,36 @@ const Navbar = ({
               onClick={() => {
                 setOpen((current) => !current);
               }}
-              className="h-max capitalize font-secondary"
+              className="h-max flex gap-2 items-center capitalize font-secondary"
             >
-              🙍‍♂️ {groom.title}
+              <Image
+                height={300}
+                width={300}
+                src={UdayProfilePic}
+                alt="uday profile pic"
+                placeholder="blur"
+                priority={false}
+                className="size-10 rounded-full"
+              />
+              {groom.title}
             </Link>
             <Link
               href={`/${lang}/bride`}
               onClick={() => {
                 setOpen((current) => !current);
               }}
-              className="h-max capitalize font-secondary"
+              className="h-max flex gap-2 items-center  capitalize font-secondary"
             >
-              🙍‍♀️ {bride.title}
+              <Image
+                height={300}
+                width={300}
+                src={SwapnaProfilePic}
+                placeholder="blur"
+                alt="swapna profile pic"
+                priority={false}
+                className="size-10 rounded-full"
+              />{" "}
+              {bride.title}
             </Link>
             <Link
               href="https://maps.app.goo.gl/yeJBRyUoHo6zgYJZA"

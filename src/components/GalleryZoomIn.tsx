@@ -25,9 +25,9 @@ const GalleryZoomIn = () => {
   ];
 
   return (
-    <div className="hidden pt-[25vh] bg-secondary md:block">
+    <div className="pt-[25vh] bg-secondary">
       <section className="h-[300vh] relative" ref={containerRef}>
-        <div className="sticky top-0 overflow-hidden h-[100vh]">
+        <div className="sticky top-0 overflow-hidden h-screen">
           {pictures.map(({ source, scale }, index) => {
             return (
               <motion.div

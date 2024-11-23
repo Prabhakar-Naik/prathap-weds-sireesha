@@ -79,13 +79,13 @@ const Details = ({
       ? [
           `${day} ${month}, ${dayjs(convertedDate).get("y")}, ${dayjsDate.get(
             "hours"
-          )}: ${dayjsDate.get("minutes")} AM`,
+          )}:${dayjsDate.get("minutes")} AM`,
           `${weekDay}, ${place}`,
         ]
       : [
           `${day - 1} ${month}, ${dayjs(convertedDate).get(
             "y"
-          )}, రాత్రి ${dayjsDate.get("hours")}: ${dayjsDate.get("minutes")}`,
+          )}, రాత్రి ${dayjsDate.get("hours")}:${dayjsDate.get("minutes")}`,
           `${weekDay}, ${place}`,
         ];
 
