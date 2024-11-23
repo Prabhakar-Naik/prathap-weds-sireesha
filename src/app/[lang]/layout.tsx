@@ -9,6 +9,7 @@ import { NextFontWithVariable } from "next/dist/compiled/@next/font";
 import { getDictionary } from "@/lib/dictionary";
 import { redirect } from "next/navigation";
 import { Metadata } from "next";
+import { LoaderContextProvider } from "@/utils/LoaderContext";
 
 const englishPrimaryFont = localFont({
   src: "../../../public/fonts/Monalisa.otf",
@@ -106,12 +107,14 @@ export default async function Layout({
 
   return (
     <LenisScrollProvider>
-      <main
-        className={`${fontFamily.primary[parsedLanguage].variable} ${fontFamily.secondary[parsedLanguage].variable} font-primary bg-primary text-text antialiased`}
-      >
-        <Navbar groom={data.groom} bride={data.bride} />
-        {children}
-      </main>
+      <LoaderContextProvider>
+        <main
+          className={`${fontFamily.primary[parsedLanguage].variable} ${fontFamily.secondary[parsedLanguage].variable} font-primary bg-primary text-text antialiased`}
+        >
+          <Navbar groom={data.groom} bride={data.bride} />
+          {children}
+        </main>
+      </LoaderContextProvider>
     </LenisScrollProvider>
   );
 }

@@ -6,9 +6,11 @@ import { motion, useAnimate, useInView } from "framer-motion";
 import confetti from "canvas-confetti";
 import AnimatedText from "@/utils/AnimatedText";
 import { Dictionary } from "@/lib/types";
+import { useLoaderContext } from "@/utils/LoaderContext";
 
 const HeroSection = ({ data }: { data: Dictionary }) => {
   const containerRef = useRef(null);
+  const { hasLoaded } = useLoaderContext();
   const inView = useInView(containerRef, { amount: 0.5, once: true });
   const [scope, animate] = useAnimate();
   const handleAnimation = async () => {
@@ -48,10 +50,10 @@ const HeroSection = ({ data }: { data: Dictionary }) => {
   };
 
   useEffect(() => {
-    if (inView) {
+    if (inView && hasLoaded) {
       handleAnimation();
     }
-  }, [inView]);
+  }, [inView, hasLoaded]);
 
   return (
     <section ref={scope}>
@@ -60,6 +62,7 @@ const HeroSection = ({ data }: { data: Dictionary }) => {
           text={data.title.split(" ")}
           className="text-5xl text-center text-text leading-15 absolute top-[17vh] w-screen tall:top-[20vh] md:portrait:text-7xl"
           el="h1"
+          repeatAnimation={hasLoaded}
         />
 
         <div className="relative h-screen w-[140vw] left-[50%] translate-x-[-50%] pointer-events-none">

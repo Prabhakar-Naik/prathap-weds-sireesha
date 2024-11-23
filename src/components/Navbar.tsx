@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { VolumeOff, Volume2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Dictionary } from "@/lib/types";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Locale } from "@/i18n.config";
 import Timer from "./Timer";
+import { useLoaderContext } from "@/utils/LoaderContext";
 
 const Navbar = ({
   bride,
@@ -17,6 +19,35 @@ const Navbar = ({
 }) => {
   const [open, setOpen] = useState(false);
   const { lang } = useParams<{ lang: Locale }>();
+  const [isPlaying, setIsPlaying] = useState(false);
+  const { hasLoaded } = useLoaderContext();
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    if (hasLoaded && audioRef.current) {
+      audioRef.current.play().then(() => {
+        if (audioRef.current) {
+          audioRef.current.volume = 0.2;
+          audioRef.current.currentTime = 31.5;
+        }
+        setIsPlaying(true);
+      });
+    }
+  }, [hasLoaded]);
+
+  const handlePlayPause = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        audioRef.current.play().catch((err) => {
+          console.error("Audio playback failed:", err);
+        });
+        setIsPlaying(true);
+      }
+    }
+  };
 
   return (
     <>
@@ -26,40 +57,49 @@ const Navbar = ({
             {lang === "en" ? "Wedding Invitation" : "పెండ్లి పిలుపు"}
           </Link>
 
-          <button
-            className="group"
-            aria-expanded={open}
-            aria-label={open ? "Close menu" : "Open menu"}
-            onClick={() => {
-              setOpen((current) => !current);
-            }}
-          >
-            <svg
-              className="pointer-events-none"
-              width={20}
-              height={20}
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              xmlns="http://www.w3.org/2000/svg"
+          <div className="flex gap-2">
+            <button
+              className="h-10 w-10 grid place-items-center rounded-full"
+              onClick={handlePlayPause}
             >
-              <path
-                d="M4 12L20 12"
-                className="origin-center -translate-y-[7px] transition-all duration-300 [transition-timing-function:cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-x-0 group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[315deg]"
-              />
-              <path
-                d="M4 12H20"
-                className="origin-center transition-all duration-300 [transition-timing-function:cubic-bezier(.5,.85,.25,1.8)] group-aria-expanded:rotate-45"
-              />
-              <path
-                d="M4 12H20"
-                className="origin-center translate-y-[7px] transition-all duration-300 [transition-timing-function:cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[135deg]"
-              />
-            </svg>
-          </button>
+              {isPlaying ? <Volume2 size={20} /> : <VolumeOff size={20} />}
+            </button>
+
+            <button
+              className="group"
+              aria-expanded={open}
+              aria-label={open ? "Close menu" : "Open menu"}
+              onClick={() => {
+                setOpen((current) => !current);
+              }}
+            >
+              <svg
+                className="pointer-events-none"
+                width={20}
+                height={20}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 12L20 12"
+                  className="origin-center -translate-y-[7px] transition-all duration-300 [transition-timing-function:cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-x-0 group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[315deg]"
+                />
+                <path
+                  d="M4 12H20"
+                  className="origin-center transition-all duration-300 [transition-timing-function:cubic-bezier(.5,.85,.25,1.8)] group-aria-expanded:rotate-45"
+                />
+                <path
+                  d="M4 12H20"
+                  className="origin-center translate-y-[7px] transition-all duration-300 [transition-timing-function:cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[135deg]"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -113,6 +153,10 @@ const Navbar = ({
           </motion.div>
         </div>
       </div>
+
+      <audio id="musicplayer" autoPlay ref={audioRef} loop className="sr-only">
+        <source src="/bg-music.mp3" />
+      </audio>
     </>
   );
 };

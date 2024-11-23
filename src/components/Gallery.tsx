@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import Image from "next/image";
 
 // Import Swiper styles
@@ -11,6 +11,7 @@ import "swiper/css/effect-cards";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { EffectCards } from "swiper/modules";
+import dynamic from "next/dynamic";
 
 import couplePic from "../../public/wedding_pics/group.avif";
 import groomPic from "../../public/wedding_pics/uday.webp";
@@ -20,7 +21,8 @@ import WeddingPic2 from "../../public/wedding_pics/weddingPic2.avif";
 import AnimatedText from "@/utils/AnimatedText";
 import { Dictionary } from "@/lib/types";
 import { useWindowSize } from "@/utils/useWindowSize";
-import GalleryZoomIn from "./GalleryZoomIn";
+
+const GalleryZoomIn = dynamic(() => import("./GalleryZoomIn"), { ssr: false });
 
 const Gallery = ({ data }: { data: Dictionary }) => {
   const { groom, bride } = data;
@@ -38,7 +40,7 @@ const Gallery = ({ data }: { data: Dictionary }) => {
   };
 
   return (
-    <>
+    <Suspense fallback={null}>
       <section className="min-h-screen w-screen bg-secondary relative overflow-x-hidden grid items-center md:hidden">
         {width < 768 ? (
           <Swiper
@@ -145,7 +147,7 @@ const Gallery = ({ data }: { data: Dictionary }) => {
           <GalleryZoomIn />
         )}
       </section>
-    </>
+    </Suspense>
   );
 };
 

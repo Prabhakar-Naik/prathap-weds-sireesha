@@ -45,7 +45,7 @@ const Details = ({
       opacity: 0,
     },
     animate: {
-      left: "-3rem",
+      left: "-1rem",
       opacity: 1,
       transition: {
         duration: 0.7,
