@@ -110,13 +110,11 @@ export default async function Layout({
   return (
     <LenisScrollProvider>
       <LoaderContextProvider>
-        <LayoutProvider>
-          <main
-            className={`${fontFamily.primary[parsedLanguage].variable} ${fontFamily.secondary[parsedLanguage].variable} font-primary bg-primary text-text antialiased`}
-          >
-            {children}
-          </main>
-        </LayoutProvider>
+        <main
+          className={`${fontFamily.primary[parsedLanguage].variable} ${fontFamily.secondary[parsedLanguage].variable} font-primary bg-primary text-text antialiased`}
+        >
+          <LayoutProvider>{children}</LayoutProvider>
+        </main>
       </LoaderContextProvider>
     </LenisScrollProvider>
   );
