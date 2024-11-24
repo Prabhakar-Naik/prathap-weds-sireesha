@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Locale } from "@/i18n.config";
-import { useLoaderContext } from "@/utils/LoaderContext";
+import { useLoaderContext } from "@/components/LoaderContext";
 import UdayProfilePic from "../../public/uday-profile.webp";
 import SwapnaProfilePic from "../../public/swapna-profile.webp";
 import { motion } from "framer-motion";
@@ -29,6 +29,13 @@ const Navbar = () => {
         setIsPlaying(true);
       });
     }
+
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
+    };
   }, [hasLoaded]);
 
   const handlePlayPause = () => {
@@ -121,7 +128,7 @@ const Navbar = () => {
         </div>
       </motion.nav>
 
-      <audio id="musicplayer" autoPlay ref={audioRef} loop className="sr-only">
+      <audio id="musicplayer" ref={audioRef} loop className="sr-only">
         <source src="/bg-music.mp3" />
       </audio>
     </>

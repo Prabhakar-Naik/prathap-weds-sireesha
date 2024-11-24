@@ -6,7 +6,7 @@ import { motion, useAnimate, useInView } from "framer-motion";
 import confetti from "canvas-confetti";
 import AnimatedText from "@/utils/AnimatedText";
 import { Dictionary } from "@/lib/types";
-import { useLoaderContext } from "@/utils/LoaderContext";
+import { useLoaderContext } from "@/components/LoaderContext";
 
 const HeroSection = ({ data }: { data: Dictionary }) => {
   const containerRef = useRef(null);
@@ -67,7 +67,7 @@ const HeroSection = ({ data }: { data: Dictionary }) => {
 
         <div className="relative h-screen w-[140vw] left-[50%] translate-x-[-50%] pointer-events-none">
           <Image
-            src="./decoration.svg"
+            src="/decoration.svg"
             alt="marriage_decoration"
             priority
             fill
@@ -86,7 +86,7 @@ const HeroSection = ({ data }: { data: Dictionary }) => {
               opacity: 0,
             }}
           >
-            <Image src="./Groom.svg" alt="groom_pic" priority fill />
+            <Image src="/Groom.svg" alt="groom_pic" priority fill />
           </motion.div>
 
           <motion.div
@@ -97,7 +97,7 @@ const HeroSection = ({ data }: { data: Dictionary }) => {
               opacity: 0,
             }}
           >
-            <Image src="./Bride.svg" alt="bride_pic" priority fill />
+            <Image src="/Bride.svg" alt="bride_pic" priority fill />
           </motion.div>
         </div>
       </div>

@@ -1,15 +1,17 @@
+import { Metadata } from "next";
 import localFont from "next/font/local";
 import { NTR, Noto_Sans_Telugu, Noto_Sans } from "next/font/google";
-import LenisScrollProvider from "@/components/LenisScrollProvider";
+import { NextFontWithVariable } from "next/dist/compiled/@next/font";
+import { redirect } from "next/navigation";
+
 import "../../styles/globals.css";
-import Navbar from "@/components/Navbar";
 import { Params, ParamsSchema } from "@/lib/types";
 import { Locale } from "@/i18n.config";
-import { NextFontWithVariable } from "next/dist/compiled/@next/font";
+
 import { getDictionary } from "@/lib/dictionary";
-import { redirect } from "next/navigation";
-import { Metadata } from "next";
-import { LoaderContextProvider } from "@/utils/LoaderContext";
+import LenisScrollProvider from "@/components/LenisScrollProvider";
+import { LoaderContextProvider } from "@/components/LoaderContext";
+import LayoutProvider from "@/components/LayoutProvider";
 
 const englishPrimaryFont = localFont({
   src: "../../../public/fonts/Love_Cookies.otf",
@@ -108,12 +110,13 @@ export default async function Layout({
   return (
     <LenisScrollProvider>
       <LoaderContextProvider>
-        <main
-          className={`${fontFamily.primary[parsedLanguage].variable} ${fontFamily.secondary[parsedLanguage].variable} font-primary bg-primary text-text antialiased`}
-        >
-          <Navbar />
-          {children}
-        </main>
+        <LayoutProvider>
+          <main
+            className={`${fontFamily.primary[parsedLanguage].variable} ${fontFamily.secondary[parsedLanguage].variable} font-primary bg-primary text-text antialiased`}
+          >
+            {children}
+          </main>
+        </LayoutProvider>
       </LoaderContextProvider>
     </LenisScrollProvider>
   );

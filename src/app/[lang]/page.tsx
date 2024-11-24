@@ -1,9 +1,6 @@
-import React from "react";
-
 import HeroSection from "@/components/HeroSection";
 import Gallery from "@/components/Gallery";
 import Details from "@/components/Details";
-import Loader from "@/components/Loader";
 import { getDictionary } from "@/lib/dictionary";
 import { Params } from "@/lib/types";
 import { ParamsSchema } from "@/lib/types";
@@ -33,7 +30,6 @@ const page = async ({ params }: { params: Params }) => {
       <HeroSection data={data} />
       <Gallery data={data} />
       <Details invite={data.invite} date={data.date} />
-      <Loader />
     </>
   );
 };

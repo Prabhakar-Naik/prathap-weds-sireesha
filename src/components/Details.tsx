@@ -10,6 +10,7 @@ import { LocationIcon } from "@/utils/Icons";
 import { Dictionary } from "@/lib/types";
 import { Locale } from "@/i18n.config";
 import Timer from "./Timer";
+import { useWindowSize } from "@/utils/useWindowSize";
 
 const Details = ({
   invite,
@@ -21,6 +22,7 @@ const Details = ({
   const containerRef = useRef(null);
   const inView = useInView(containerRef, { amount: 0.5, once: true });
   const [startAnimation, setStartAnimation] = useState(false);
+  const { width } = useWindowSize();
   const { lang } = useParams<{ lang: Locale }>();
   const convertedDate = new Date(date);
 
@@ -46,7 +48,7 @@ const Details = ({
       opacity: 0,
     },
     animate: {
-      left: "-1rem",
+      left: width >= 400 ? "-3rem" : "-1rem",
       opacity: 1,
       transition: {
         duration: 0.7,
@@ -107,7 +109,7 @@ const Details = ({
           initial="initial"
           animate={inView ? "animate" : "initial"}
         >
-          <Image src="./groomDancing.svg" alt="groom_pic" priority fill />
+          <Image src="/groomDancing.svg" alt="groom_pic" priority fill />
         </motion.div>
 
         <motion.div
@@ -116,7 +118,7 @@ const Details = ({
           initial="initial"
           animate={inView ? "animate" : "initial"}
         >
-          <Image src="./brideDancing.svg" alt="bride_pic" priority fill />
+          <Image src="/brideDancing.svg" alt="bride_pic" priority fill />
         </motion.div>
       </div>
 

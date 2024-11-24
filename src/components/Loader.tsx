@@ -1,10 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-
-import NumberFlow from "@number-flow/react";
-import { useLoaderContext } from "@/utils/LoaderContext";
 import { Play } from "lucide-react";
+import NumberFlow from "@number-flow/react";
+
+import { useLoaderContext } from "@/components/LoaderContext";
 import Logo from "./Logo";
 import { useParams } from "next/navigation";
 import { Locale } from "@/i18n.config";
