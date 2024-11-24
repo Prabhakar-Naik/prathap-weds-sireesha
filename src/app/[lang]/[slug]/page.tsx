@@ -29,7 +29,7 @@ const DynamicPage = async ({ params }: { params: Params }) => {
   }
 
   return (
-    <section className="bg-primary min-h-screen px-4 py-24">
+    <section className="bg-primary min-h-screen px-4 pt-8 pb-24">
       <article className="prose text-text prose-lg prose-stone prose-img:bg-stone-300 prose-a:after:content-['↗'] mx-auto prose-headings:font-normal prose-headings:mt-0 prose-headings:mb-2 prose-headings:font-primary font-secondary animate-in fade-in slide-in-from-bottom-24 duration-300 ease-[cubic-bezier(0.33,1,0.68,1)]">
         <div className="relative not-prose aspect-square rounded-md overflow-hidden mb-10 bg-stone-300">
           <Image

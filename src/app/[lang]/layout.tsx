@@ -111,7 +111,7 @@ export default async function Layout({
         <main
           className={`${fontFamily.primary[parsedLanguage].variable} ${fontFamily.secondary[parsedLanguage].variable} font-primary bg-primary text-text antialiased`}
         >
-          <Navbar groom={data.groom} bride={data.bride} />
+          <Navbar />
           {children}
         </main>
       </LoaderContextProvider>

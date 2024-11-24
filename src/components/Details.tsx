@@ -9,6 +9,7 @@ import AnimatedText from "@/utils/AnimatedText";
 import { LocationIcon } from "@/utils/Icons";
 import { Dictionary } from "@/lib/types";
 import { Locale } from "@/i18n.config";
+import Timer from "./Timer";
 
 const Details = ({
   invite,
@@ -90,7 +91,7 @@ const Details = ({
         ];
 
   return (
-    <section className="min-h-svh w-screen bg-text relative overflow-x-hidden py-8 px-4 flex flex-col justify-evenly">
+    <section className="min-h-svh w-screen bg-text relative overflow-x-hidden pt-8 pb-24 px-4 flex flex-col justify-evenly">
       <AnimatedText
         text={[invite]}
         className="text-accent text-3xl text-center md:text-5xl"
@@ -123,6 +124,8 @@ const Details = ({
         text={formattedDate}
         className="text-primary font-secondary font-medium text-2xl text-center mt-8 md:text-3xl"
       />
+
+      <Timer />
 
       <a
         href="https://maps.app.goo.gl/yeJBRyUoHo6zgYJZA"

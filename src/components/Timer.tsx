@@ -31,35 +31,36 @@ const Timer = () => {
   }
 
   return (
-    <div className="flex items-center gap-4 text-sm bg-secondary/70 py-1 px-2 rounded-md">
-      <div className="grid">
-        <NumberFlow value={timeLeft.days} className="font-mono font-semibold" />
-        <span className="font-secondary">Days</span>
+    <div className="flex my-2 items-center justify-center gap-2 text-primary py-1 px-2 rounded-md font-secondary">
+      <div>
+        <NumberFlow
+          value={timeLeft.days}
+          className="font-semibold font-primary"
+        />
+        <span> Days,</span>
       </div>
-
-      <div className="grid">
+      <div>
         <NumberFlow
           value={timeLeft.hours}
-          className="font-mono font-semibold"
+          className="font-semibold font-primary"
         />
-        <span className="font-secondary">Hrs</span>
+        <span> Hrs,</span>
       </div>
-
-      <div className="grid">
+      <div>
         <NumberFlow
           value={timeLeft.minutes}
-          className="font-mono font-semibold"
+          className="font-semibold font-primary"
         />
-        <span className="font-secondary">Mins</span>
+        <span> Mins,</span>
       </div>
-
-      <div className="grid">
+      <div>
         <NumberFlow
           value={timeLeft.seconds}
-          className="font-mono font-semibold"
+          className="font-semibold font-primary"
         />
-        <span className="font-secondary">Sec</span>
+        <span> Sec</span>
       </div>
+      Left
     </div>
   );
 };

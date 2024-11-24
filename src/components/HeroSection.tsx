@@ -82,7 +82,7 @@ const HeroSection = ({ data }: { data: Dictionary }) => {
             className="relative h-[22rem] w-44 md:portrait:h-[34rem] md:portrait:w-52 z-10"
             id="groom"
             initial={{
-              left: "-2rem",
+              left: "-1rem",
               opacity: 0,
             }}
           >

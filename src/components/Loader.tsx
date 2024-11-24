@@ -5,6 +5,9 @@ import { motion } from "framer-motion";
 import NumberFlow from "@number-flow/react";
 import { useLoaderContext } from "@/utils/LoaderContext";
 import { Play } from "lucide-react";
+import Logo from "./Logo";
+import { useParams } from "next/navigation";
+import { Locale } from "@/i18n.config";
 
 const buttonVariants = {
   initial: {
@@ -31,6 +34,7 @@ const loaderVariants = {
 const Loader = () => {
   const [percentage, setPercentage] = useState(0);
   const { hasLoaded, setHasLoaded } = useLoaderContext();
+  const { lang } = useParams<{ lang: Locale }>();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -59,6 +63,11 @@ const Loader = () => {
       role="status"
       className="fixed h-screen w-screen top-0 left-0 bg-primary z-50 flex justify-center items-center flex-col gap-2"
     >
+      <Logo className="h-20" />
+      <p className="text-center text-2xl font-primary leading-10">
+        {lang === "en" ? "Wedding Invitation" : "పెండ్లి పిలుపు"}
+      </p>
+
       <div className="text-4xl">
         <NumberFlow value={Math.floor(percentage)} className="font-semibold" />{" "}
         %
