@@ -9,9 +9,12 @@ import { Locale } from "@/i18n.config";
 import { useLoaderContext } from "@/utils/LoaderContext";
 import UdayProfilePic from "../../public/uday-profile.webp";
 import SwapnaProfilePic from "../../public/swapna-profile.webp";
+import { motion } from "framer-motion";
+import { useWindowSize } from "@/utils/useWindowSize";
 
 const Navbar = () => {
   const { lang, slug } = useParams<{ lang: Locale; slug: string }>();
+  const { width } = useWindowSize();
   const [isPlaying, setIsPlaying] = useState(false);
   const { hasLoaded } = useLoaderContext();
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -42,9 +45,29 @@ const Navbar = () => {
     }
   };
 
+  const navVariants = {
+    initial: {
+      ...(width > 768 ? { top: "-10rem" } : { bottom: "-10rem" }),
+      opacity: 0,
+    },
+    animate: {
+      ...(width > 768 ? { top: "1rem" } : { bottom: "1rem" }),
+      opacity: 1,
+    },
+  };
+
   return (
     <>
-      <nav className="fixed bottom-4 w-full z-20 md:top-4">
+      <motion.nav
+        variants={navVariants}
+        initial="initial"
+        animate={hasLoaded ? "animate" : "initial"}
+        transition={{
+          delay: 2.5,
+          ease: [0.33, 1, 0.68, 1],
+        }}
+        className="fixed w-full z-20 md:top-4"
+      >
         <div className="bg-primary/50 border border-text/50 flex justify-between items-center w-60 mx-auto py-2 px-2.5 rounded-full backdrop-blur-md">
           <Link
             href={`/${lang}`}
@@ -96,7 +119,7 @@ const Navbar = () => {
             {isPlaying ? <Volume2 size={20} /> : <VolumeOff size={20} />}
           </button>
         </div>
-      </nav>
+      </motion.nav>
 
       <audio id="musicplayer" autoPlay ref={audioRef} loop className="sr-only">
         <source src="/bg-music.mp3" />
