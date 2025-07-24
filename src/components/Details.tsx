@@ -3,7 +3,7 @@
 import dayjs from "dayjs";
 import React, { useRef, useState } from "react";
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView } from "motion/react";
 import { useParams } from "next/navigation";
 import AnimatedText from "@/utils/AnimatedText";
 import { LocationIcon } from "@/utils/Icons";
@@ -73,9 +73,9 @@ const Details = ({
 
   const dayjsDate = dayjs(convertedDate);
   const day = dayjsDate.get("D");
-  const month = lang === "te" ? "డిసెంబర్" : "December";
-  const weekDay = lang === "te" ? "శుక్రవారం" : "Saturday";
-  const place = lang === "te" ? "భీమవరం" : "Bhimavaram";
+  const month = lang === "te" ? "జూలై" : "July";
+  const weekDay = lang === "te" ? "గురువారం" : "Thursday";
+  const place = lang === "te" ? "వేపచెర్ల" : "Vepacherla";
 
   const formattedDate =
     lang === "en"
@@ -88,7 +88,7 @@ const Details = ({
       : [
           `${day - 1} ${month}, ${dayjs(convertedDate).get(
             "y"
-          )}, రాత్రి ${dayjsDate.get("hours")}:${dayjsDate.get("minutes")}`,
+          )}, ఉదయం ${dayjsDate.get("hours")}:${dayjsDate.get("minutes")}`,
           `${weekDay}, ${place}`,
         ];
 
@@ -130,7 +130,7 @@ const Details = ({
       <Timer />
 
       <a
-        href="https://maps.app.goo.gl/yeJBRyUoHo6zgYJZA"
+        href="https://maps.app.goo.gl/7e22GKGDH5egDGeo7"
         target="_blank"
         tabIndex={0}
         role="button"

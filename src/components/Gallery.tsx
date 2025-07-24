@@ -15,7 +15,7 @@ import dynamic from "next/dynamic";
 
 import couplePic from "../../public/wedding_pics/group.avif";
 import groomPic from "../../public/wedding_pics/uday.webp";
-import bridePic from "../../public/wedding_pics/swapna.avif";
+import bridePic from "../../public/wedding_pics/sireesha.avif";
 import WeddingPic1 from "../../public/wedding_pics/weddingPic1.avif";
 import WeddingPic2 from "../../public/wedding_pics/weddingPic2.avif";
 import AnimatedText from "@/utils/AnimatedText";

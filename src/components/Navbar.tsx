@@ -9,7 +9,7 @@ import { Locale } from "@/i18n.config";
 import { useLoaderContext } from "@/components/LoaderContext";
 import UdayProfilePic from "../../public/uday-profile.webp";
 import SwapnaProfilePic from "../../public/swapna-profile.webp";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useWindowSize } from "@/utils/useWindowSize";
 
 const Navbar = () => {
@@ -73,7 +73,7 @@ const Navbar = () => {
           delay: 2.5,
           ease: [0.33, 1, 0.68, 1],
         }}
-        className="fixed w-full z-20 md:top-4"
+        className="fixed w-full z-20 md:top-4 h-max"
       >
         <div className="bg-primary/50 border border-text/50 flex justify-between items-center w-60 mx-auto py-2 px-2.5 rounded-full backdrop-blur-md">
           <Link

@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect } from "react";
 import Image from "next/image";
-import { motion, useAnimate, useInView } from "framer-motion";
+import { motion, useAnimate, useInView } from "motion/react";
 import confetti from "canvas-confetti";
 import AnimatedText from "@/utils/AnimatedText";
 import { Dictionary } from "@/lib/types";
