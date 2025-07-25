@@ -16,8 +16,8 @@ import dynamic from "next/dynamic";
 import couplePic from "../../public/wedding_pics/group.webp";
 import groomPic from "../../public/wedding_pics/prathap.webp";
 import bridePic from "../../public/wedding_pics/sireesha.webp";
-import WeddingPic1 from "../../public/wedding_pics/weddingPic1.avif";
-import WeddingPic2 from "../../public/wedding_pics/weddingPic2.avif";
+import WeddingPic1 from "../../public/wedding_pics/weddingPic1.webp";
+import WeddingPic2 from "../../public/wedding_pics/weddingPic2.jpg";
 import AnimatedText from "@/utils/AnimatedText";
 import { Dictionary } from "@/lib/types";
 import { useWindowSize } from "@/utils/useWindowSize";
@@ -125,7 +125,7 @@ const Gallery = ({ data }: { data: Dictionary }) => {
             </SwiperSlide>
 
             {/* candid shots */}
-            {/* <SwiperSlide className="card">
+            <SwiperSlide className="card">
               <Image
                 src={WeddingPic1}
                 fill
@@ -142,12 +142,12 @@ const Gallery = ({ data }: { data: Dictionary }) => {
                 src={WeddingPic2}
                 fill
                 alt="wedding_pic2"
-                className="object-cover object-center"
+                className="object-cover object-left"
                 placeholder="blur"
                 priority={false}
                 sizes="500px"
               />
-            </SwiperSlide> */}
+            </SwiperSlide>
           </Swiper>
 
           <div className="flex gap-2 justify-center -translate-y-4">

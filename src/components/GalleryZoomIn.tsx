@@ -6,8 +6,8 @@ import Image from "next/image";
 import couplePic from "../../public/wedding_pics/group.webp";
 import groomPic from "../../public/wedding_pics/prathap.webp";
 import bridePic from "../../public/wedding_pics/sireesha.webp";
-// import WeddingPic1 from "../../public/wedding_pics/weddingPic1.avif";
-// import WeddingPic2 from "../../public/wedding_pics/weddingPic2.avif";
+import WeddingPic1 from "../../public/wedding_pics/weddingPic1.webp";
+import WeddingPic2 from "../../public/wedding_pics/weddingPic2.jpg";
 
 const GalleryZoomIn = () => {
   const containerRef = useRef(null);
@@ -21,8 +21,8 @@ const GalleryZoomIn = () => {
     { source: couplePic, scale, position: "bottom" },
     { source: groomPic, scale, position: "top" },
     { source: bridePic, scale, position: "top" },
-    // { source: WeddingPic1, scale },
-    // { source: WeddingPic2, scale },
+    { source: WeddingPic1, scale },
+    { source: WeddingPic2, scale },
   ];
 
   return (
@@ -40,8 +40,8 @@ const GalleryZoomIn = () => {
                   className={`relative w-[25vw] h-[35vh] ${
                     index === 1 ? "-left-[27.5vw] h-[40vh]" : ""
                   } ${index === 2 ? "left-[27.5vw] h-[40vh]" : ""}
-                    ${index === 3 ? "-top-[35vh] h-[40vh]" : ""}
-                    ${index === 4 ? "-bottom-[35vh] h-[40vh]" : ""}
+                    ${index === 3 ? "-top-[40vh] h-[40vh]" : ""}
+                    ${index === 4 ? "-bottom-[40vh] h-[40vh]" : ""}
                     `}
                 >
                   <Image
