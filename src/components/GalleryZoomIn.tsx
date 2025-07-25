@@ -6,8 +6,8 @@ import Image from "next/image";
 import couplePic from "../../public/wedding_pics/group.webp";
 import groomPic from "../../public/wedding_pics/prathap.webp";
 import bridePic from "../../public/wedding_pics/sireesha.webp";
-import WeddingPic1 from "../../public/wedding_pics/weddingPic1.avif";
-import WeddingPic2 from "../../public/wedding_pics/weddingPic2.avif";
+// import WeddingPic1 from "../../public/wedding_pics/weddingPic1.avif";
+// import WeddingPic2 from "../../public/wedding_pics/weddingPic2.avif";
 
 const GalleryZoomIn = () => {
   const containerRef = useRef(null);
@@ -18,11 +18,11 @@ const GalleryZoomIn = () => {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 4]);
 
   const pictures = [
-    { source: couplePic, scale },
-    { source: groomPic, scale },
-    { source: bridePic, scale },
-    { source: WeddingPic1, scale },
-    { source: WeddingPic2, scale },
+    { source: couplePic, scale, position: "bottom" },
+    { source: groomPic, scale, position: "top" },
+    { source: bridePic, scale, position: "top" },
+    // { source: WeddingPic1, scale },
+    // { source: WeddingPic2, scale },
   ];
 
   return (
@@ -37,7 +37,7 @@ const GalleryZoomIn = () => {
                 className="w-full h-full absolute flex justify-center items-center"
               >
                 <div
-                  className={`relative w-[25vw] h-[25vh] ${
+                  className={`relative w-[25vw] h-[35vh] ${
                     index === 1 ? "-left-[27.5vw] h-[40vh]" : ""
                   } ${index === 2 ? "left-[27.5vw] h-[40vh]" : ""}
                     ${index === 3 ? "-top-[35vh] h-[40vh]" : ""}
@@ -49,7 +49,7 @@ const GalleryZoomIn = () => {
                     fill
                     alt={`wedding_image${index}`}
                     placeholder="blur"
-                    className="object-cover object-top"
+                    className={"object-cover object-top"}
                     sizes="1000px"
                   />
                 </div>

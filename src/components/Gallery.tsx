@@ -125,7 +125,7 @@ const Gallery = ({ data }: { data: Dictionary }) => {
             </SwiperSlide>
 
             {/* candid shots */}
-            <SwiperSlide className="card">
+            {/* <SwiperSlide className="card">
               <Image
                 src={WeddingPic1}
                 fill
@@ -147,7 +147,7 @@ const Gallery = ({ data }: { data: Dictionary }) => {
                 priority={false}
                 sizes="500px"
               />
-            </SwiperSlide>
+            </SwiperSlide> */}
           </Swiper>
 
           <div className="flex gap-2 justify-center -translate-y-4">

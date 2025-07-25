@@ -37,7 +37,7 @@ const Details = ({
       transition: {
         duration: 0.7,
         delay: 0.55,
-        ease: ["easeIn"],
+        ease: [0.33, 1, 0.68, 1],
       },
     },
   };
@@ -53,7 +53,7 @@ const Details = ({
       transition: {
         duration: 0.7,
         delay: 0.55,
-        ease: ["easeIn"],
+        ease: [0.33, 1, 0.68, 1],
       },
     },
   };

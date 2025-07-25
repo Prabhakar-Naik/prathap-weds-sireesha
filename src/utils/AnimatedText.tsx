@@ -1,5 +1,5 @@
-import React, { Fragment, useRef } from "react";
-import { motion, useInView } from "motion/react";
+import React, { Fragment, JSX, useRef } from "react";
+import { motion, useInView, Variants } from "motion/react";
 
 interface AnimatedText {
   text: string | string[];
@@ -18,7 +18,7 @@ const AnimatedText = ({
   const inView = useInView(textRef, { amount: 0.5, once: true });
   const textArray = Array.isArray(text) ? text : [text];
 
-  const defaultVariants = {
+  const defaultVariants: Variants = {
     initial: {
       opacity: 0,
       y: 50,

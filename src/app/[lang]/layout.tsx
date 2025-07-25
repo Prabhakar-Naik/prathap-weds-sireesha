@@ -67,10 +67,10 @@ export async function generateMetadata({
 
   return {
     title: data.title,
-    metadataBase: new URL("https://uday-weds-swapna.vercel.app"),
+    metadataBase: new URL("https://prathap-weds-sireesha.vercel.app"),
     openGraph: {
       title: data.title,
-      url: "https://uday-weds-swapna.vercel.app",
+      url: "https://prathap-weds-sireesha.app",
       images: [
         {
           url: "/og-image-together.webp",
