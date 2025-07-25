@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from "react";
 import NumberFlow from "@number-flow/react";
 
-const Timer = () => {
-  const targetDate = new Date("2024-12-07T04:27:00+05:30").getTime();
+const Timer = ({ date = "" }: { date: string }) => {
+  const targetDate = new Date(date).getTime();
   const [timeLeft, setTimeLeft] = useState(getTimeRemaining(targetDate));
 
   useEffect(() => {

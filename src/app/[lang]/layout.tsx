@@ -105,8 +105,6 @@ export default async function Layout({
     return redirect("/en");
   }
 
-  const data = await getDictionary(parsedLanguage);
-
   return (
     <LenisScrollProvider>
       <LoaderContextProvider>

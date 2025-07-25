@@ -36,7 +36,7 @@ const DynamicPage = async ({ params }: { params: Params }) => {
             src={page.imageURL}
             fill
             alt={`${page.title}_pic`}
-            className="object-cover object-center"
+            className="object-cover object-top"
             priority
             quality={100}
             sizes="500px"

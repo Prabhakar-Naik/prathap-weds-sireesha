@@ -3,7 +3,7 @@
 import dayjs from "dayjs";
 import React, { useRef, useState } from "react";
 import Image from "next/image";
-import { motion, useInView } from "motion/react";
+import { motion, useInView, Variants } from "motion/react";
 import { useParams } from "next/navigation";
 import AnimatedText from "@/utils/AnimatedText";
 import { LocationIcon } from "@/utils/Icons";
@@ -26,7 +26,7 @@ const Details = ({
   const { lang } = useParams<{ lang: Locale }>();
   const convertedDate = new Date(date);
 
-  const groomVariants = {
+  const groomVariants: Variants = {
     initial: {
       left: "-2rem",
       opacity: 0,
@@ -37,12 +37,12 @@ const Details = ({
       transition: {
         duration: 0.7,
         delay: 0.55,
-        ease: [0.33, 1, 0.68, 1],
+        ease: ["easeIn"],
       },
     },
   };
 
-  const brideVariants = {
+  const brideVariants: Variants = {
     initial: {
       left: "2rem",
       opacity: 0,
@@ -53,7 +53,7 @@ const Details = ({
       transition: {
         duration: 0.7,
         delay: 0.55,
-        ease: [0.33, 1, 0.68, 1],
+        ease: ["easeIn"],
       },
     },
   };
@@ -86,7 +86,7 @@ const Details = ({
           `${weekDay}, ${place}`,
         ]
       : [
-          `${day - 1} ${month}, ${dayjs(convertedDate).get(
+          `${day} ${month}, ${dayjs(convertedDate).get(
             "y"
           )}, ఉదయం ${dayjsDate.get("hours")}:${dayjsDate.get("minutes")}`,
           `${weekDay}, ${place}`,
@@ -127,7 +127,7 @@ const Details = ({
         className="text-primary font-secondary font-medium text-2xl text-center mt-8 md:text-3xl"
       />
 
-      <Timer />
+      <Timer date={date} />
 
       <a
         href="https://maps.app.goo.gl/7e22GKGDH5egDGeo7"

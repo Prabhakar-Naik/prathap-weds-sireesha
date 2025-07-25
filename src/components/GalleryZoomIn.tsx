@@ -1,10 +1,11 @@
 "use client";
+
 import React, { useRef } from "react";
 import { useScroll, useTransform, motion } from "motion/react";
 import Image from "next/image";
-import couplePic from "../../public/wedding_pics/group.avif";
-import groomPic from "../../public/wedding_pics/uday.webp";
-import bridePic from "../../public/wedding_pics/sireesha.avif";
+import couplePic from "../../public/wedding_pics/group.webp";
+import groomPic from "../../public/wedding_pics/prathap.webp";
+import bridePic from "../../public/wedding_pics/sireesha.webp";
 import WeddingPic1 from "../../public/wedding_pics/weddingPic1.avif";
 import WeddingPic2 from "../../public/wedding_pics/weddingPic2.avif";
 

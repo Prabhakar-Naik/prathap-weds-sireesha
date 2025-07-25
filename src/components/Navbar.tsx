@@ -7,8 +7,8 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Locale } from "@/i18n.config";
 import { useLoaderContext } from "@/components/LoaderContext";
-import UdayProfilePic from "../../public/uday-profile.webp";
-import SwapnaProfilePic from "../../public/swapna-profile.webp";
+import PrathapProfilePic from "../../public/prathap-profile.webp";
+import SireeshaProfilePic from "../../public/sireesha-profile.webp";
 import { motion } from "motion/react";
 import { useWindowSize } from "@/utils/useWindowSize";
 
@@ -92,8 +92,8 @@ const Navbar = () => {
             <Image
               height={300}
               width={300}
-              src={UdayProfilePic}
-              alt="uday profile pic"
+              src={PrathapProfilePic}
+              alt="prathap pic"
               placeholder="blur"
               priority={false}
               className={`size-10 rounded-full border-text ${
@@ -109,9 +109,9 @@ const Navbar = () => {
             <Image
               height={300}
               width={300}
-              src={SwapnaProfilePic}
+              src={SireeshaProfilePic}
               placeholder="blur"
-              alt="swapna profile pic"
+              alt="sireesha profile pic"
               priority={false}
               className={`size-10 rounded-full border-text ${
                 slug === "bride" && "border-4"
